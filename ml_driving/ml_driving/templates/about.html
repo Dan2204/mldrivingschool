@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+<!-- CONTENT -->
+
+{% block content %}
+
+<section class="about-section">
+  <div class="link-container-text">
+    <h1 class="head-title about">About Matt Lucas Driving School</h1>
+  </div>
+  <div class="about-info">
+    <div class="link-container-text">
+      <div class="about-card">
+        <div class="about-content">
+          <h2 class="title">Some title stuff</h2>
+          <p class="lead">
+            Shit to say stuff about what a good driver instruction person you is!
+          </p>
+          <p class="lead">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, eveniet
+            corporis est nulla earum necessitatibus doloribus corrupti atque harum
+            officiis?
+          </p>
+          <h3 class="head-title">Choose us because...</h3>
+          <ul class="journey-list-items">
+            <li class="app_item lg">Interesting shit</li>
+            <li class="app_item lg">Oooo oooo choose me cause i'm good!</li>
+            <li class="app_item lg">Bite me bitch!</li>
+          </ul>
+        </div>
+        <div class="about-img">
+          <img
+            src="{{ url_for('static', filename='img/matt_car.jpeg') }}"
+            alt="Matt Lucas"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<h2 class="pre-footer-message">More text here...</h2>
+
+{% endblock content %}

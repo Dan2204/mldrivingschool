@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+
+<!-- CONTENT -->
+
+{% block content %}
+
+<section class="theory-section">
+  <div class="link-container-text">{% include '_journey_sub-menu.html' %}</div>
+  <!-- THEORY-INFO -->
+  <div class="theory-info">
+    <div class="link-container-text">
+      <div class="theory-info_section">
+        <div class="theory-info_text">
+          <h1 class="head-title theory">Theory & Hazard Perception Tests</h1>
+          <p class="lead">
+            The
+            <a
+              href="https://www.gov.uk/government/organisations/driver-and-vehicle-standards-agency"
+              target="blank"
+              class="text-link"
+              >DVSA</a
+            >
+            theory test consists of 2 sections:
+          </p>
+          <ul class="journey-list-items">
+            <li class="app_item lg">Multiple Choice Test</li>
+            <li class="app_item lg">Hazard Perception Test</li>
+          </ul>
+          <p class="lead">
+            Both are to be completed together at
+            <a
+              href="https://www.gov.uk/find-theory-test-centre"
+              target="blank"
+              class="text-link"
+              >your nearest test center</a
+            >. <br />You need to pass both to be successful.
+          </p>
+          <p class="lead">
+            We recommend that you study for the Theory and Hazard Perception Tests whilst
+            taking practical lessons, which will reinforce your studies during practical
+            lessons and put to action what you have leaned.
+          </p>
+        </div>
+        <div class="theory-img">
+          <img
+            src="{{ url_for('static', filename='img/theory-test-room.jpeg') }}"
+            alt="Theory Test Room"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END OF THEORY-INFO -->
+
+  <!-- STUDY AND BOOK -->
+  <section class="study-and-book">
+    <div class="link-container-text">
+      <h2 class="head-title study">Study and Booking</h2>
+
+      <!-- THEORY -->
+      <h3 class="title">Theory Test:</h3>
+      <div class="theory-test-info">
+        <p class="lead">
+          The Theory Test is a Multiple Choice formatted exam and is completed on a
+          computer. It is designed to increase knowledge of road safety and rules of the
+          road. The pass mark is 43 of 50 questions.
+        </p>
+        <p class="lead">
+          Your instructor will help you with your theory during your lessons to help
+          ensure you have the knowledge to pass.
+        </p>
+        <p class="lead">
+          You can purchase an array of books, DVD's, apps to help you prepare. We
+          recommend taking your Theory Test as soon as possible so you can concentrate on
+          the practical lessons.
+        </p>
+        <p class="lead">
+          Also ensure you revise
+          <a
+            href="https://www.gov.uk/guidance/the-highway-code"
+            target="blank"
+            class="text-link"
+            >The Highway Code,
+          </a>
+          and familiarise yourself with road safety and rules of the road.
+        </p>
+      </div>
+
+      <!-- HAZARD PERCEPTION -->
+      <h3 class="title hazard">Hazard Perception Test:</h3>
+      <div class="hazard-perception-info">
+        <p class="lead">
+          The Hazard Perception Test is designed to identify and predict potential dangers
+          and hazards on the road, from a drivers perspective. This test will also be
+          completed on a computer, clicking the mouse to identify hazards as they appear
+          on the screen.
+        </p>
+        <p class="lead">
+          There are 15 hazards to identify, scoring 5 points for each (if you manage to
+          click the mouse as the hazard starts to develop). The pass mark is 44 out of 75
+          points.
+        </p>
+        <p class="lead">
+          You can practice with 3 clips for free
+          <a
+            href="https://www.safedrivingforlife.info/free-practice-tests/hazard-perception-test/"
+            target="blank"
+            class="text-link"
+            >here</a
+          >.
+        </p>
+      </div>
+
+      <!-- <div class="section-break"></div> -->
+
+      <!-- ADDITIONAL INFO -->
+      <div class="theory-additional-info">
+        <ul class="journey-list-items no-padding-left">
+          <li class="app_item lead">
+            If you fail either the Hazard Perception or Theory Tests, you will be required
+            to take them both again. You will also have to wait for 3 days before taking
+            another test.
+          </li>
+          <li class="app_item lead">
+            Once you have passed, your certificate will be valid for 2 years from the date
+            you passed. <br />You will need to take your Practical Test within these 2
+            years, otherwise you will be required to take both tests again.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- <div class="section-break"></div> -->
+
+    <!-- BOOKING -->
+    <div class="link-container-text">
+      <div class="booking-img">
+        <div class="img-container">
+          <img
+            src="{{ url_for('static', filename='img/booking_test.jpg') }}"
+            alt="Booking a test"
+          />
+        </div>
+      </div>
+      <h3 class="title booking">Booking a Test:</h3>
+      <div class="book-test-info">
+        <p class="lead">
+          Booking a test is quick and easy,
+          <a href="https://www.gov.uk/book-theory-test" target="blank" class="text-link"
+            >visit the booking page on GOV.UK</a
+          >, the process should take about 5 minutes.
+        </p>
+        <p class="lead">
+          Tests cost £23 and you will need to own a
+          <a href="{{ url_for('core.eligibility') }}" class="text-link"
+            >UK provisional Licence</a
+          >
+          to book.
+        </p>
+        <p class="lead">
+          You will also need to make sure you have the following to hand when booking:
+        </p>
+        <ul class="journey-list-items">
+          <li class="app_item lg">Your provisional driving licence number</li>
+          <li class="app_item lg">A credit or debit card to pay for the test</li>
+          <li class="app_item lg">
+            Details of any special needs as you will have to mention what they are during
+            the booking process. DVSA can arrange for more time on the multiple choice
+            questions or any other reasonable arrangements (you will be required to
+            provide proof)
+          </li>
+        </ul>
+        <p class="lead">
+          On the day of the test, make sure you bring along your provisional photocard
+          licence, you won't be allowed to sit the test without it and will lose your fee.
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- END OF STUDY AND BOOK -->
+  <h2 class="pre-footer-message">Good luck if you're sitting your theory test soon!</h2>
+</section>
+
+{% endblock content %}

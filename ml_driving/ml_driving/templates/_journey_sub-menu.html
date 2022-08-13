@@ -1,0 +1,17 @@
+<div class="journey__sub-menu">
+  <div class="journey {% if title == 'Eligibility' %}sub-active{% endif %}">
+    <a href="{{ sub_menu['option1']['link'] }}"
+      >{{ sub_menu['option1']['option'] }}<i class="fa-solid fa-angle-right"></i
+    ></a>
+  </div>
+  <div class="journey {% if title == 'Theory' %}sub-active{% endif %}">
+    <a href="{{ url_for('core.theory') }}"
+      >Theory<i class="fa-solid fa-angle-right"></i
+    ></a>
+  </div>
+  <div class="journey {% if title == 'Practical' %}sub-active{% endif %}">
+    <a href="{{ url_for('core.practical') }}"
+      >Practical<i class="fa-solid fa-angle-right"></i
+    ></a>
+  </div>
+</div>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title | default("MLDS") }} | MMDS - Driving School</title>
+
+    <!-- FONT AWESOME -->
+    <script
+      src="https://kit.fontawesome.com/1f2dac61b3.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- FONTS -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&amp;v1∓subset=latin,latin-ext"
+      type="text/css"
+      media="screen"
+      id="google_font"
+    />
+    <!-- STYLESHEETS -->
+    <!-- Main CSS File -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles/main.css') }}"
+    />
+    <!-- <link rel="stylesheet" href="../static/css/style.css" /> -->
+    <!-- END STYLESHEETS -->
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+  </head>
+  <body>
+    <!-- CONTENT BODY -->
+    <div class="bg-image"></div>
+    <div class="container">
+      <!-- NAVBAR -->
+      <header>
+        <section class="top">
+          <div class="top-img">
+            <div class="top-img-banner"></div>
+            <div class="img_bg">
+              <img
+                src="{{ url_for('static', filename='img/windscreen2.jpg') }}"
+                alt="Person Driving"
+              />
+            </div>
+          </div>
+          <div class="bottom-img-banner"><div class="inner"></div></div>
+
+          <div class="logo">
+            <a href="{{ url_for('core.home') }}">
+              <img
+                src="{{ url_for('static', filename='img/mlds_logo.png') }}"
+                alt="Matt Lucas School Of Motoring"
+              />
+            </a>
+          </div>
+          <div class="head-contact">
+            <h2>Call MLDS Today</h2>
+            <div class="numbers">
+              <h2 class="head-tel">07528 037900</h2>
+              <!-- <h2 class="head-tel">07899 123456</h2> -->
+            </div>
+          </div>
+        </section>
+        <nav class="nav">
+          <div class="bottom-nav-banner"><div class="inner"></div></div>
+          <button class="toggle-btn" id="toggle-btn">
+            <i class="fa-solid fa-bars"></i>Menu
+          </button>
+          <ul class="nav-links" id="nav-links">
+            <li class="nav-link {% if title == 'Home' %}active{% endif %}">
+              <a href="{{ url_for('core.home') }}">Home</a>
+            </li>
+
+            <li
+              class="nav-link {% if title == 'Standard' or title == 'Intensive' or title == 'Refresher'%}active{% endif %}"
+              id="link-courses"
+            >
+              <a
+                >Pricing<span><i class="fa-solid fa-caret-down"></i></span
+              ></a>
+              <ul class="dropdown" id="dd-courses">
+                <li><a href="{{ url_for('core.standard') }}">Standard Lessons</a></li>
+                <li><a href="{{ url_for('core.intensive') }}">Intensive Courses</a></li>
+                <li><a href="{{ url_for('core.refresher') }}">Refresher Courses</a></li>
+              </ul>
+            </li>
+            <li class="nav-link {% if title == 'About' %}active{% endif %}">
+              <a href="{{ url_for('core.about') }}">About Us</a>
+            </li>
+            <li
+              class="nav-link {% if title == 'Eligibility' or title == 'Theory' or title == 'Practical'%}active{% endif %}"
+              id="link-learners"
+            >
+              <a
+                >Your Journey<span><i class="fa-solid fa-caret-down"></i></span
+              ></a>
+              <ul class="dropdown" id="dd-learners">
+                <li><a href="{{ url_for('core.eligibility') }}">Eligibility</a></li>
+                <li><a href="{{ url_for('core.theory') }}">The Theory Test</a></li>
+                <li><a href="{{ url_for('core.practical') }}">The Practical Test</a></li>
+              </ul>
+            </li>
+            <li class="nav-link {% if title == 'Useful Links' %}active{% endif %}">
+              <a href="{{ url_for('core.useful_info') }}">Useful Links</a>
+            </li>
+            <li class="nav-link {% if title == 'FAQ\'s' %}active{% endif %}">
+              <a href="{{ url_for('core.faqs') }}">FAQ's</a>
+            </li>
+            <li
+              class="nav-link {% if title == 'Reviews' or title == 'Gallary' %}active{% endif %}"
+              id="link-reviews"
+            >
+              <a
+                >Reviews<span><i class="fa-solid fa-caret-down"></i></span
+              ></a>
+              <ul class="dropdown" id="dd-reviews">
+                <li><a href="{{ url_for('core.reviews') }}">Reviews</a></li>
+                <li><a href="{{ url_for('core.gallary') }}">Success Gallary</a></li>
+              </ul>
+            </li>
+            <li class="nav-link {% if title == 'Contact' %}active{% endif %}">
+              <a href="{{ url_for('core.contact') }}">Contact Us</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- JINJA2 CONTENT INSERT HERE -->
+
+      {% block content %} {% endblock content %}
+
+      <!-- END JINJA2 CONTENT -->
+
+      <div class="banner"></div>
+      <footer class="content">
+        <!-- <div class="content"> -->
+        <div class="get-in-touch">
+          <h3 class="title">Get In Touch</h3>
+
+          <h3 class="title-company">Matt Lucas Driving School</h3>
+          <ul>
+            <li>10 The Close</li>
+            <li>Caldicot</li>
+            <li>Monmouthshire</li>
+            <li>NP26 4EF</li>
+          </ul>
+
+          <div class="phone">
+            <p>Phone: <span>01234 567899</span></p>
+            <p>Mobile: <span>07899 123456</span></p>
+          </div>
+          <div class="social">
+            <p>Email: <a href="#">info@mldrivingschool.co.uk</a></p>
+            <p>Web: <a href="#">www.mldrivingschool.co.uk</a></p>
+          </div>
+          <div class="copyright">
+            © Copyright
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+            <a href="#">mldrivingschool.co.uk</a> All Rights Reserved
+          </div>
+        </div>
+        <div class="additional">
+          <div class="services">
+            <h3 class="title">Our Services</h3>
+            <ul class="services-list">
+              <li>Driving Lessons</li>
+              <li>Intesnsive Courses</li>
+              <li>Refresher Courses</li>
+
+              <li>& more</li>
+            </ul>
+          </div>
+          <div class="areas-covered">
+            <h3 class="title">Areas Covered</h3>
+            <ul class="areas">
+              <li>Caldicot</li>
+              <li>Chepstow</li>
+              <li>& all surrounding villages</li>
+            </ul>
+          </div>
+        </div>
+        <!-- </div> -->
+      </footer>
+    </div>
+    <!-- END OF CONTAINER DIV -->
+  </body>
+</html>

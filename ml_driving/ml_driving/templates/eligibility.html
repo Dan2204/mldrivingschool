@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+<!-- CONTENT -->
+
+{% block content %}
+
+<section class="eligibility-section">
+  <div class="link-container-text">{% include '_journey_sub-menu.html' %}</div>
+  <div class="provisional-info">
+    <div class="link-container-text">
+      <h1 class="head-title">Provisional Licence</h1>
+      <p class="lead">
+        Before you can start learning to drive on the roads, you must hold a UK
+        provisional driving licence.
+      </p>
+      <p class="lead">
+        You can apply for this in person at your local post office, or
+        <a
+          href="https://www.gov.uk/apply-first-provisional-driving-licence"
+          target="blank"
+          class="text-link"
+          >online</a
+        >.
+      </p>
+      <p class="lead">
+        Once you have recieved your provisional licence, you will be legally eligible to
+        start driving.
+      </p>
+      <p class="lead">
+        On your first lesson, you will need to bring your provisional license along with a
+        <a
+          href="https://www.gov.uk/government/organisations/driver-and-vehicle-standards-agency"
+          target="blank"
+          class="text-link"
+          >DVSA</a
+        >
+        code which proves your entitlement to drive.<br /><br />
+        You will also need to be able to read a new-style number plate from 20 metres, or
+        an old-style number plate form 20.5 metres. (Please check the legal eyesight
+        requirements
+        <a
+          href="https://www.gov.uk/driving-eyesight-rules"
+          target="blank"
+          class="text-link"
+          >here</a
+        >)
+      </p>
+    </div>
+  </div>
+  <div class="link-container-text">
+    <div class="licence_application">
+      <div class="eligibility_img">
+        <img src="{{ url_for('static', filename='img/paperwork.jpeg') }}" alt="" />
+      </div>
+      <div class="eligibility_txt">
+        <h3 class="sub-title">Requirements for applying for your provisional licence:</h3>
+        <ul class="journey-list-items">
+          <li class="app_item">
+            You can apply 3 months before you turn 17. But you need to wait until your
+            birthday before you can drive on the road
+          </li>
+          <li class="app_item">You'll need a valid proof of identification</li>
+          <li class="app_item">You must live in the UK</li>
+          <li class="app_item">
+            You will need to provide all the addresses you have lived for the last 3 years
+          </li>
+          <li class="app_item">You can't be prevented from driving for any reason</li>
+          <li class="app_item">
+            The
+            <a
+              href="https://www.gov.uk/driving-licence-fees"
+              target="blank"
+              class="text-link"
+              >cost</a
+            >
+            will be £34 if paid online, or £43 if applying by post
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- END OF LICENCE_APPLICATION -->
+  <h2 class="pre-footer-message">
+    Please wear sensible shoes and clothing for your lessons.<br />
+    This allows you to drive safely without distractions.
+  </h2>
+</section>
+
+{% endblock content %}

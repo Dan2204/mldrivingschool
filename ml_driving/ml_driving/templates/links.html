@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+
+<!-- CONTENT -->
+
+{% block content %}
+
+<section class="layout-section-links">
+  <div class="link-container-text">
+    <!-- <h1 class="head-title">Useful Links</h1> -->
+    <h1 class="head-title"></h1>
+  </div>
+  <div class="provisional-info links">
+    <div class="link-icon"><i class="fa-solid fa-link fa-2xl"></i></div>
+    <div class="link-container-text link-info">
+      <div class="info_img">
+        <img
+          src="{{ url_for('static', filename='img/useful_info.jpg') }}"
+          alt="Light Bulb"
+        />
+      </div>
+      <h2 class="title info-page">
+        Below are a selection of links to pages you may find useful on your journey.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<div class="link-container-text">
+  <section class="cards-section">
+    <div class="link-materials">
+      <h1 class="head-title links">Study Materials:</h1>
+      <div class="link-cards">
+        <div class="card material">
+          <div class="card-content">
+            <a
+              href="https://www.gov.uk/guidance/the-highway-code"
+              class="card-item"
+              target="blank"
+              >View and revise the Highway Code online (Free)</a
+            >
+          </div>
+        </div>
+        <div class="card material">
+          <div class="card-content">
+            <a
+              href="https://www.safedrivingforlife.info/shop/official-dvsa-highway-code/"
+              class="card-item"
+              target="blank"
+              >Buy the official Highway Code book</a
+            >
+          </div>
+        </div>
+        <div class="card material">
+          <div class="card-content">
+            <a
+              href="https://www.safedrivingforlife.info/shop/official-dvsa-theory-test-kit-car-drivers-elearning/"
+              class="card-item"
+              target="blank"
+              >Buy the official DVSA Theory and HP Test kit</a
+            >
+          </div>
+        </div>
+        <div class="card material">
+          <div class="card-content">
+            <a
+              href="https://www.safedrivingforlife.info/free-practice-tests/"
+              class="card-item"
+              target="blank"
+              >Take some (Free) DVSA Practice Tests</a
+            >
+          </div>
+        </div>
+        <div class="card material">
+          <div class="card-content">
+            <a
+              href="https://www.safedrivingforlife.info/shop/"
+              class="card-item"
+              target="blank"
+              >Recommended items from the DVSA site shop</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- DVSA CARDS -->
+    <div class="link-dvsa">
+      <h1 class="head-title links">DVSA Links:</h1>
+      <div class="link-cards">
+        <div class="card dvsa">
+          <div class="card-content">
+            <a
+              href="https://www.gov.uk/apply-first-provisional-driving-licence"
+              class="card-item"
+              target="blank"
+              >Apply for your Provisional Licence</a
+            >
+          </div>
+        </div>
+        <div class="card dvsa">
+          <div class="card-content">
+            <a href="https://www.gov.uk/book-theory-test" class="card-item" target="blank"
+              >Apply to sit your Theory Test</a
+            >
+          </div>
+        </div>
+        <div class="card dvsa">
+          <div class="card-content">
+            <a
+              href="https://www.gov.uk/book-driving-test"
+              class="card-item"
+              target="blank"
+              >Apply to sit you Practical Test</a
+            >
+          </div>
+        </div>
+        <div class="card dvsa">
+          <div class="card-content">
+            <a
+              href="https://www.gov.uk/driving-eyesight-rules"
+              class="card-item"
+              target="blank"
+              >Minimum Eyesight Requirements to drive</a
+            >
+          </div>
+        </div>
+        <div class="card dvsa">
+          <div class="card-content">
+            <a
+              href="https://www.gov.uk/government/publications/car-show-me-tell-me-vehicle-safety-questions/car-show-me-tell-me-vehicle-safety-questions"
+              class="card-item"
+              target="blank"
+              >'Show me, tell me' vehicle saftey questions</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- END OF LICENCE_APPLICATION -->
+<h2 class="pre-footer-message">
+  For any information, please give us a call or
+  <a href="{{ url_for('core.contact') }}" target="blank" class="text-link nr"
+    >contact us</a
+  >
+</h2>
+
+{% endblock content %}
