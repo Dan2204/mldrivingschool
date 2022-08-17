@@ -16,34 +16,82 @@ def about():
 
 @bp.route('/plans/standard')
 def standard():
-  return render_template('plan_std.html', title="Standard")
+  
+  sub_menu = {
+    "option1": {
+      "option": "Standard",
+      "link": "core.standard",
+    },
+    "option2": {
+      "option": "Intensive",
+      "link": "core.intensive",
+    },
+    "option3": {
+      "option": "Refresher",
+      "link": "core.refresher",
+    },
+  }
+  
+  return render_template('plan_std.html', title="Standard", sub_menu=sub_menu)
 
 
 @bp.route('/plans/intensive')
 def intensive():
-  return render_template('plan_intense.html', title="Intensive")
+  
+  sub_menu = {
+    "option1": {
+      "option": "Standard",
+      "link": "core.standard",
+    },
+    "option2": {
+      "option": "Intensive",
+      "link": "core.intensive",
+    },
+    "option3": {
+      "option": "Refresher",
+      "link": "core.refresher",
+    },
+  }
+  
+  return render_template('plan_intense.html', title="Intensive", sub_menu=sub_menu)
 
 
 @bp.route('/plans/refresher')
 def refresher():
-  return render_template('plan_refresher.html', title="Refresher")
+  
+  sub_menu = {
+    "option1": {
+      "option": "Standard",
+      "link": "core.standard",
+    },
+    "option2": {
+      "option": "Intensive",
+      "link": "core.intensive",
+    },
+    "option3": {
+      "option": "Refresher",
+      "link": "core.refresher",
+    },
+  }
+  
+  return render_template('plan_refresher.html', title="Refresher", sub_menu=sub_menu)
 
 
-@bp.route('/journeyeligibility')
+@bp.route('/journey/eligibility')
 def eligibility():
   
   sub_menu = {
     "option1": {
       "option": "Eligibility",
-      "link": "url_for('core.eligibility')",
+      "link": "core.eligibility",
     },
     "option2": {
       "option": "Theory",
-      "link": "{{ url_for('core.theory') }}",
+      "link": "core.theory",
     },
     "option3": {
       "option": "Practical",
-      "link": "{{ url_for('core.practical') }}",
+      "link": "core.practical",
     },
   }
   
@@ -56,15 +104,15 @@ def theory():
   sub_menu = {
     "option1": {
       "option": "Eligibility",
-      "link": "{{ url_for('core.eligibility') }}",
+      "link": "core.eligibility",
     },
     "option2": {
       "option": "Theory",
-      "link": "{{ url_for('core.theory') }}",
+      "link": "core.theory",
     },
     "option3": {
       "option": "Practical",
-      "link": "{{ url_for('core.practical') }}",
+      "link": "core.practical",
     },
   }
   
@@ -77,15 +125,15 @@ def practical():
   sub_menu = {
     "option1": {
       "option": "Eligibility",
-      "link": "{{ url_for('core.eligibility') }}",
+      "link": "core.eligibility",
     },
     "option2": {
       "option": "Theory",
-      "link": "{{ url_for('core.theory') }}",
+      "link": "core.theory",
     },
     "option3": {
       "option": "Practical",
-      "link": "{{ url_for('core.practical') }}",
+      "link": "core.practical",
     },
   }
   

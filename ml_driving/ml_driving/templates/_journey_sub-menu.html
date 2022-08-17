@@ -1,17 +1,23 @@
 <div class="journey__sub-menu">
-  <div class="journey {% if title == 'Eligibility' %}sub-active{% endif %}">
-    <a href="{{ sub_menu['option1']['link'] }}"
+  <div
+    class="journey {% if title == sub_menu['option1']['option'] %}sub-active{% endif %}"
+  >
+    <a href="{{ url_for(sub_menu['option1']['link']) }}"
       >{{ sub_menu['option1']['option'] }}<i class="fa-solid fa-angle-right"></i
     ></a>
   </div>
-  <div class="journey {% if title == 'Theory' %}sub-active{% endif %}">
-    <a href="{{ url_for('core.theory') }}"
-      >Theory<i class="fa-solid fa-angle-right"></i
+  <div
+    class="journey {% if title == sub_menu['option2']['option'] %}sub-active{% endif %}"
+  >
+    <a href="{{ url_for(sub_menu['option2']['link']) }}"
+      >{{ sub_menu['option2']['option'] }}<i class="fa-solid fa-angle-right"></i
     ></a>
   </div>
-  <div class="journey {% if title == 'Practical' %}sub-active{% endif %}">
-    <a href="{{ url_for('core.practical') }}"
-      >Practical<i class="fa-solid fa-angle-right"></i
+  <div
+    class="journey {% if title == sub_menu['option3']['option'] %}sub-active{% endif %}"
+  >
+    <a href="{{ url_for(sub_menu['option3']['link']) }}"
+      >{{ sub_menu['option3']['option'] }}<i class="fa-solid fa-angle-right"></i
     ></a>
   </div>
 </div>
