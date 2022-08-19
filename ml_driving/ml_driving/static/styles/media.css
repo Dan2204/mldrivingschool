@@ -1,0 +1,60 @@
+@media screen and (max-width: 1200px) {
+  .container {
+    max-width: 950px;
+  }
+
+  .nav-link {
+    margin: 0.2em 0.1em;
+  }
+
+  .nav-link a {
+    font-size: 0.9rem;
+  }
+
+  .top .logo {
+    margin: 2em 5em 1em 3em;
+  }
+
+  .top .head-contact {
+    margin: 4em 2em 0.7em 4em;
+  }
+
+  .alert-info {
+    --message-width: 30.7rem;
+    --m-offset: 39px;
+    font-size: 0.95rem;
+  }
+
+  .car-icon {
+    /* left: -5rem; */
+  }
+
+  .car-icon i {
+    /* font-size: 3.75rem; */
+  }
+
+  .head-title.price {
+    /* margin-left: 6rem; */
+  }
+
+  .price-std_img {
+    width: 28%;
+    /* height: 200%; */
+  }
+
+  .price-std_img img {
+    /* width: 120%; */
+  }
+}
+
+@media screen and (max-width: 990px) {
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 645px) {
+}
+
+@media screen and (max-width: 450px) {
+}

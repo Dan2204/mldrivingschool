@@ -7,8 +7,28 @@
 <section class="price_intense-section">
   <div class="link-container-text">{% include '_journey_sub-menu.html' %}</div>
   <div class="provisional-info price">
-    <div class="link-container-text">
-      <h1 class="head-title price">SERVICE PLAN STANDARD PAGE</h1>
+    <div class="link-container-text price-head">
+      <div class="price-std_img">
+        <img
+          src="{{ url_for('static', filename='img/price-std_img.jpg') }}"
+          alt="L-Plate"
+        />
+      </div>
+      <h1 class="head-title price">Standard Lessons</h1>
+      <span class="car-icon"><i class="fa fa-car"></i></span>
+    </div>
+  </div>
+  <div class="link-container-text">
+    <div class="price-flex">
+      <div class="price-info__std">
+        <h2 class="title">Header</h2>
+        <p class="lead">Learn to drive safely, properly and confidently.</p>
+        <p class="lead">
+          We endeavour to make sure you feel comfortable and safe whilst driving, and we
+          aim to get you there in as short a time as possible.
+        </p>
+      </div>
+      <div class="form-section">{% include '_contact_form.html' %}</div>
     </div>
   </div>
 

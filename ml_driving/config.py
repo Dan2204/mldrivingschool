@@ -5,6 +5,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY') or '@£$£^$%*%^(£%$£)'
+    SG_KEY = os.environ.get('SENDGRID_API_KEY') or None
 
     # DATABASE SET UP #
     ENV = 'dev:sqlite'

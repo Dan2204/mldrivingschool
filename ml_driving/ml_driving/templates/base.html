@@ -20,12 +20,23 @@
       media="screen"
       id="google_font"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Poppins:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
     <!-- STYLESHEETS -->
     <!-- Main CSS File -->
     <link
       rel="stylesheet"
       type="text/css"
       href="{{ url_for('static', filename='styles/main.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles/media.css') }}"
     />
     <!-- <link rel="stylesheet" href="../static/css/style.css" /> -->
     <!-- END STYLESHEETS -->
@@ -58,7 +69,7 @@
             </a>
           </div>
           <div class="head-contact">
-            <h2>Call MLDS Today</h2>
+            <h2>Call Matt Today:</h2>
             <div class="numbers">
               <h2 class="head-tel">07528 037900</h2>
               <!-- <h2 class="head-tel">07899 123456</h2> -->
@@ -128,6 +139,16 @@
           </ul>
         </nav>
       </header>
+      <div class="container-message">
+        <div class="message-center">
+          {% with messages = get_flashed_messages() %} {% if messages %} {% for message in
+          messages %}
+          <div id="display-message" class="alert alert-info" role="alert">
+            {{ message }}
+          </div>
+          {% endfor %} {% endif %} {% endwith %}
+        </div>
+      </div>
 
       <!-- JINJA2 CONTENT INSERT HERE -->
 
@@ -189,5 +210,24 @@
       </footer>
     </div>
     <!-- END OF CONTAINER DIV -->
+
+    <!-- JAVASCRIPT -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="text/javascript">
+      const close_alert = document.getElementById('display-message');
+      window.setTimeout(function () {
+        $('.alert')
+          .fadeTo(500, 0)
+          .slideUp(500, function () {
+            $(this).remove();
+          });
+      }, 10000);
+    </script>
+    <!-- END OF JAVASCRIPT -->
   </body>
 </html>

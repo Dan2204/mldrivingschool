@@ -1,6 +1,9 @@
 from ml_driving.core import bp
+from ml_driving.core.form import ContactForm
+from ml_driving.core.process_form import process_form
+from ml_driving.core.menu_items import price_menu, journey_menu
 
-from flask import render_template, redirect, url_for, flash
+from flask import render_template, redirect, url_for, flash, request
 from flask_login import current_user, login_required
 
 
@@ -14,86 +17,61 @@ def about():
   return render_template('about.html', title="About")
 
 
-@bp.route('/plans/standard')
+@bp.route('/plans/standard', methods=['GET', 'POST'])
 def standard():
   
-  sub_menu = {
-    "option1": {
-      "option": "Standard",
-      "link": "core.standard",
-    },
-    "option2": {
-      "option": "Intensive",
-      "link": "core.intensive",
-    },
-    "option3": {
-      "option": "Refresher",
-      "link": "core.refresher",
-    },
-  }
+  form = ContactForm()
+  back = request.referrer
+  sub_menu = price_menu
   
-  return render_template('plan_std.html', title="Standard", sub_menu=sub_menu)
+  if form.validate_on_submit():
+    if process_form(form):
+      flash("Message Sent, Please wait for reply.")
+    else:
+      flash("Error sending message, please call MLDS")
+    return redirect(back)
+  
+  return render_template('plan_std.html', title="Standard", sub_menu=sub_menu, form=form)
 
 
-@bp.route('/plans/intensive')
+@bp.route('/plans/intensive', methods=['GET', 'POST'])
 def intensive():
   
-  sub_menu = {
-    "option1": {
-      "option": "Standard",
-      "link": "core.standard",
-    },
-    "option2": {
-      "option": "Intensive",
-      "link": "core.intensive",
-    },
-    "option3": {
-      "option": "Refresher",
-      "link": "core.refresher",
-    },
-  }
+  form = ContactForm()
+  back = request.referrer
+  sub_menu = price_menu
   
-  return render_template('plan_intense.html', title="Intensive", sub_menu=sub_menu)
+  if form.validate_on_submit():
+    if process_form(form):
+      flash("Message Sent, Please wait for reply.")
+    else:
+      flash("Error sending message, please call MLDS")
+    return redirect(back)
+  
+  return render_template('plan_intense.html', title="Intensive", sub_menu=sub_menu, form=form)
 
 
-@bp.route('/plans/refresher')
+@bp.route('/plans/refresher', methods=['GET', 'POST'])
 def refresher():
   
-  sub_menu = {
-    "option1": {
-      "option": "Standard",
-      "link": "core.standard",
-    },
-    "option2": {
-      "option": "Intensive",
-      "link": "core.intensive",
-    },
-    "option3": {
-      "option": "Refresher",
-      "link": "core.refresher",
-    },
-  }
+  form = ContactForm()
+  back = request.referrer
+  sub_menu = price_menu
   
-  return render_template('plan_refresher.html', title="Refresher", sub_menu=sub_menu)
+  if form.validate_on_submit():
+    if process_form(form):
+      flash("Message Sent, Please wait for reply.")
+    else:
+      flash("Error sending message, please call MLDS")
+    return redirect(back)
+  
+  return render_template('plan_refresher.html', title="Refresher", sub_menu=sub_menu, form=form)
 
 
 @bp.route('/journey/eligibility')
 def eligibility():
   
-  sub_menu = {
-    "option1": {
-      "option": "Eligibility",
-      "link": "core.eligibility",
-    },
-    "option2": {
-      "option": "Theory",
-      "link": "core.theory",
-    },
-    "option3": {
-      "option": "Practical",
-      "link": "core.practical",
-    },
-  }
+  sub_menu = journey_menu
   
   return render_template('eligibility.html', title="Eligibility", sub_menu=sub_menu)
 
@@ -101,20 +79,7 @@ def eligibility():
 @bp.route('/journey/theory')
 def theory():
   
-  sub_menu = {
-    "option1": {
-      "option": "Eligibility",
-      "link": "core.eligibility",
-    },
-    "option2": {
-      "option": "Theory",
-      "link": "core.theory",
-    },
-    "option3": {
-      "option": "Practical",
-      "link": "core.practical",
-    },
-  }
+  sub_menu = journey_menu
   
   return render_template('theory.html', title="Theory", sub_menu=sub_menu)
 
@@ -122,20 +87,7 @@ def theory():
 @bp.route('/journey/practical')
 def practical():
   
-  sub_menu = {
-    "option1": {
-      "option": "Eligibility",
-      "link": "core.eligibility",
-    },
-    "option2": {
-      "option": "Theory",
-      "link": "core.theory",
-    },
-    "option3": {
-      "option": "Practical",
-      "link": "core.practical",
-    },
-  }
+  sub_menu = journey_menu
   
   return render_template('practical.html', title="Practical", sub_menu=sub_menu)
 
@@ -163,4 +115,5 @@ def gallary():
 @bp.route('/contact')
 def contact():
   return render_template('contact.html', title="Contact")
+
 
