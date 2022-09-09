@@ -1,0 +1,15 @@
+<h4 class="bot-message">
+  <span>* </span>
+  To help prevent automated spam, please answer the question below:
+</h4>
+<p class="form-bot">
+  {% for error in form.anti_bot.errors %}
+  <span class="comment-error">{{ error }}</span>
+  {% endfor %} {{ form.anti_bot.label(class="form-label bot") }}
+  <!-- Input -->
+  {{ form.anti_bot(class="form-control bot") }}
+</p>
+
+<!-- CAPTURE -->
+<!-- SITE KEY: 6LePv6MhAAAAAElzExej_9eRQcGBtq7qhOtmGezm -->
+<!-- SECRET KEY: 6LePv6MhAAAAAHqQt9SsCmTiVyUyEAWXwkWMldsF -->

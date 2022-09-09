@@ -9,10 +9,7 @@
   <div class="provisional-info price">
     <div class="link-container-text price-head">
       <div class="price-std_img">
-        <img
-          src="{{ url_for('static', filename='img/price-std_img.jpg') }}"
-          alt="L-Plate"
-        />
+        <img src="{{ url_for('static', filename='img/price_calc.jpg') }}" alt="L-Plate" />
       </div>
       <h1 class="head-title price">Standard Lessons</h1>
       <span class="car-icon"><i class="fa fa-car"></i></span>
@@ -21,12 +18,56 @@
   <div class="link-container-text">
     <div class="price-flex">
       <div class="price-info__std">
-        <h2 class="title">Header</h2>
-        <p class="lead">Learn to drive safely, properly and confidently.</p>
-        <p class="lead">
-          We endeavour to make sure you feel comfortable and safe whilst driving, and we
-          aim to get you there in as short a time as possible.
-        </p>
+        <h2 class="title-price">Pricing</h2>
+        <div class="price-head__info">
+          <p class="lead">Learn to drive safely, properly and confidently.</p>
+          <p class="lead">
+            We endeavour to make sure you feel comfortable and safe whilst driving, and we
+            aim to get you there in as short a time as possible.
+          </p>
+          <p class="lead">
+            We provide a professional and punctual service with free local pickup and drop
+            off.<br />
+            We will tailor your tuition based on your experience and will provide support
+            and advise with your theory test.
+          </p>
+        </div>
+        <div class="price-table__img">
+          <img
+            src="{{ url_for('static', filename='img/price-std_img.jpg') }}"
+            alt="L-Plate"
+          />
+        </div>
+        <div class="price-table std">
+          <p class="lead">
+            <strong>Single Lessons:</strong><span class="price"> £35/hour</span>
+          </p>
+          <p class="lead">
+            <strong>Block of 5 Lessons:</strong
+            ><span class="price"> £165 - £33/hour</span>
+          </p>
+          <p class="lead">
+            <strong>Block of 10 Lessons:</strong
+            ><span class="price"> £330 - £33/hour</span>
+          </p>
+        </div>
+        <div class="price-tnc">
+          <ul class="tnc-list">
+            <li class="lead small">
+              Payment can be made via bank transfer or cash. Checks are not accepted.
+            </li>
+            <li class="lead small">
+              Payment must be received at least 72 hours prior to your lesson.
+            </li>
+            <li class="lead small">
+              If using a bank transfer, the payment must clear our account by that time.
+            </li>
+            <li class="lead small">
+              Cancellations can be re-booked at no charge if cancelled at least 36 hours
+              in advance, after this time, re-bookings will be charged at the full rate.
+            </li>
+          </ul>
+        </div>
       </div>
       <div class="form-section">{% include '_contact_form.html' %}</div>
     </div>

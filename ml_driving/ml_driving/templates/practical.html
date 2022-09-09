@@ -5,27 +5,141 @@
 {% block content %}
 
 <section class="practical-section">
-  <div class="link-container">{% include '_journey_sub-menu.html' %}</div>
-  <div class="provisional-info">
-    <div class="link-container">
-      <h1 class="head-title">Practical shit here</h1>
+  <div class="link-container-text">{% include '_journey_sub-menu.html' %}</div>
+  <div class="provisional-info practical">
+    <div class="practical_img">
+      <img
+        src="{{ url_for('static', filename='img/driving_test_centre.jpeg') }}"
+        alt="Driving Test Centre"
+      />
+    </div>
+    <div class="link-container-text">
+      <h1 class="head-title">Practical Driving Test</h1>
       <p class="lead">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi, fugit?
+        On Average, according to the DVSA, most people will have about 47 hours of
+        professional driving lessons and 20 hours of private practice before they pass
+        their practical diving test.
       </p>
       <p class="lead">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi cumque, optio
-        neque consectetur quos est quaerat nam ea quisquam fuga.
+        Everyone learns at a different pace and this is just an average, but it goes to
+        show that it's clearly important to get plenty of practice prior to taking your
+        practical driving test.
+      </p>
+    </div>
+  </div>
+
+  <div class="link-container-text">
+    <div class="practical-test__details">
+      <h2 class="head-title">Booking Your Practical Test</h2>
+      <p class="lead">
+        Once you have completed your Theory Test and you're ready to take your Practical
+        Test, you can visit GOV.UK to
+        <a href="https://www.gov.uk/book-driving-test" target="blank" class="text-link"
+          >book your test</a
+        >
+        online.
+      </p>
+      <h2 class="title practical">Things you'll need when booking a practical test:</h2>
+      <ul class="practical-list-items">
+        <li class="app_item lg">A valid UK provisional driving license number.</li>
+        <li class="app_item lg">A credit or Debit Card to pay for the test.</li>
+        <li class="app_item lg">Your theory test pass date and certificate number.</li>
+        <li class="app_item lg">
+          Your driving instructors personal reference number to confirm they are
+          available.
+        </li>
+      </ul>
+      <p class="lead small">
+        * When booking, please keep in mind that the date you would like to book can vary
+        depending on how busy the centre is. Some centres could be fully booked up to 3
+        months in advance.
+      </p>
+      <p class="lead practical-cost">
+        The
+        <a href="https://www.gov.uk/driving-test-cost" target="blank" class="text-link"
+          >cost</a
+        >
+        of the test is £62 on weekdays and £75 on evenings and weekends.
+      </p>
+
+      <div class="booking-img">
+        <div class="img-container test-day">
+          <img
+            src="{{ url_for('static', filename='img/steering_wheel.png') }}"
+            alt="Steering Wheel"
+          />
+        </div>
+      </div>
+      <h3 class="title booking">The Day Of Your Test:</h3>
+      <p class="lead">
+        Fully prepared and confident in everything you have learned, your instructor will
+        pick you up around an hour prior to your test. This will give time to warm up and
+        ask any questions you may have thought of.
       </p>
       <p class="lead">
-        Once you have recieved your provisional licence, you will be legally eligble to
-        start driving.
+        * Remember to bring along your provisional license and theory test pass
+        certificate.
       </p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat neque et tempore recusandae quos suscipit!
+      <p class="lead">Your test will last about 40 minutes and will include:</p>
+      <ul class="practical-list-items">
+        <li class="app_item lg">An eyesight check.</li>
+        <li class="app_item lg">
+          A '<a
+            href="https://www.gov.uk/government/publications/car-show-me-tell-me-vehicle-safety-questions/car-show-me-tell-me-vehicle-safety-questions"
+            class="text-link"
+            target="blank"
+            >show me, tell me</a
+          >' test.
+        </li>
+        <li class="app_item lg">
+          1 Driving manoeuvre: forward bay parking, pull up on the right, reverse parking
+          or reverse bay parking.
+        </li>
+        <li class="app_item lg">Emergency stop.</li>
+        <li class="app_item lg">10 Minutes of independent driving.</li>
+      </ul>
+      <p class="lead">
+        At the end of the test, your examiner will tell you if you have passed or failed.
       </p>
+      <p class="lead">
+        If you have passed, you will receive a Test Pass Certificate which will entitle
+        you to drive imediately.<br />Your driving instructor will usually drive you back
+        home afterwards though.
+      </p>
+      <p class="lead">
+        However, if you have failed, your examiner will produce a test report then inform
+        you of any errors you made and why you failed your test.
+      </p>
+    </div>
+  </div>
+
+  <div class="link-container-text">
+    <div class="practical-info-text"></div>
+    <div class="practical-info">
+      <div class="practical_img-moon">
+        <img
+          src="{{ url_for('static', filename='img/practical_moon.jpg') }}"
+          alt="Road Sign1"
+        />
+      </div>
+      <div class="practical-moon-text">
+        <p class="lead">
+          Gaining the freedom of being able to go and do things at your own time and pace
+          is such an exciting time of life and we aim to help get you there as quickly
+          (and safely) as possible.
+        </p>
+        <p class="lead">
+          We will tell you what your strengths and weaknesses are and what the examiner
+          will be looking out for.
+        </p>
+      </div>
     </div>
   </div>
 </section>
 
-<h2 class="pre-footer-message">More text here...</h2>
+<h2 class="pre-footer-message pt">
+  Manoeuvres are important, but observing and understanding the<br />
+  situations you find yourself in are what really matters.
+</h2>
 
 {% endblock content %}

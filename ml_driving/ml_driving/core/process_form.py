@@ -5,7 +5,8 @@ from sendgrid.helpers.mail import Mail
 
 def process_form(form):
   # email_to = "eruditebadger@gmail.com"
-  email_to = "dan2204.py@gmail.com"
+  # email_to = "dan2204.py@gmail.com"
+  email_to = "dan.lucas2204@gmail.com"
   name = f"{form.first_name.data} {form.last_name.data}"
   subject_text = form.subject.data if form.subject.data else ">> Not Entered <<"
   body_head = '<h2><strong>Contact from ML Driving School</strong></h2>'
@@ -22,7 +23,7 @@ def process_form(form):
     html_content=f"{body_head}\n{body_name}\n{body_email}\n{body_phone}\n" \
                   f"{body_subject}\n{body_message}\n{body_footer}")
   try:
-      return False  # TODO: DELETE THIS LINE
+      # return False  # TODO: DELETE THIS LINE
       key = os.environ.get('SENDGRID_API_KEY')
       sg = SendGridAPIClient(key)
       response = sg.send(message)

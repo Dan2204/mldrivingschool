@@ -7,9 +7,20 @@ from flask import render_template, redirect, url_for, flash, request
 from flask_login import current_user, login_required
 
 
-@bp.route('/')
+@bp.route('/', methods=['GET', 'POST'])
 def home():
-  return render_template('home.html', title="Home")
+  
+  form = ContactForm()
+  back = request.referrer
+  
+  if form.validate_on_submit():
+    if process_form(form):
+      flash("Message Sent, Please wait for reply.")
+    else:
+      flash("Error sending message, please call MLDS")
+    return redirect(back)
+  
+  return render_template('home.html', title="Home", form=form)
 
 
 @bp.route('/about')
@@ -112,8 +123,19 @@ def gallary():
   return render_template('gallary.html', title="Gallary")
 
 
-@bp.route('/contact')
+@bp.route('/contact', methods=['GET', 'POST'])
 def contact():
-  return render_template('contact.html', title="Contact")
+  
+  form = ContactForm()
+  back = request.referrer
+  
+  if form.validate_on_submit():
+    if process_form(form):
+      flash("Message Sent, Please wait for reply.")
+    else:
+      flash("Error sending message, please call MLDS")
+    return redirect(back)
+  
+  return render_template('contact.html', title="Contact", form=form)
 
 

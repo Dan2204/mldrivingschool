@@ -4,6 +4,130 @@
 
 {% block content %}
 
-<h1 class="spacer">HOME PAGE</h1>
+<section class="home-section">
+  <div class="provisional-info">
+    <div class="link-container-text home">
+      <h1 class="head-title home">Welcome to Matt Lucas Driving School</h1>
+      <div class="home-img">
+        <img
+          src="{{ url_for('static', filename='img/matt_car.jpeg') }}"
+          alt="Matt Lucas"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="home_content">
+    <div class="link-container-text">
+      <div class="content_flex">
+        <div class="content_page">
+          <div class="content_text">
+            <h2 class="title-price">Getting your license..</h2>
+            <p class="lead">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum tempora
+              atque, voluptatum nihil autem error sed natus aliquam sapiente
+              necessitatibus accusamus, dolore possimus alias sit architecto, vel
+              voluptate nesciunt facilis.
+            </p>
+
+            <p class="lead">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati culpa
+              alias perspiciatis voluptatibus voluptatum? Placeat molestias tempora iste
+              praesentium reprehenderit!
+            </p>
+
+            <p class="lead">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum tempora
+              atque, voluptatum nihil autem error sed natus aliquam sapiente
+              necessitatibus accusamus, dolore possimus alias sit architecto, vel
+              voluptate nesciunt facilis.
+            </p>
+          </div>
+          <section class="top_image_section">
+            <div class="images_section_1">
+              <div class="image_tile">
+                <a href="{{ url_for('core.standard') }}">
+                  <img
+                    src="{{ url_for('static', filename='img/price-std_img_tn.jpg') }}"
+                    alt="Stering Wheel"
+                  />
+                  <h2 class="image_info_text">
+                    Pricing<span><i class="fa-solid fa-angle-right"></i></span>
+                  </h2>
+                  <p class="image_info_details">
+                    We are passionate about teaching people to drive properly, safely and
+                    confidently..
+                    <br />
+                    <br />
+                    <strong>Click to find out more</strong>
+                  </p>
+                </a>
+              </div>
+
+              <div class="image_tile">
+                <a href="{{ url_for('core.theory') }}">
+                  <img
+                    src="{{ url_for('static', filename='img/practical_test.png') }}"
+                    alt="Stering Wheel"
+                  />
+                  <h2 class="image_info_text">
+                    Your Journey<span><i class="fa-solid fa-angle-right"></i></span>
+                  </h2>
+                  <p class="image_info_details">
+                    You need to completed your Theory and Hazard Perception Test, before
+                    you can take your practical test.
+                    <br />
+                    <br />
+                    <strong>Click to find out more</strong>
+                  </p>
+                </a>
+              </div>
+            </div>
+
+            <div class="images_section_2">
+              <div class="image_tile">
+                <a href="{{ url_for('core.eligibility') }}">
+                  <img
+                    src="{{ url_for('static', filename='img/paperwork_tn.jpeg') }}"
+                    alt="Stering Wheel"
+                  />
+                  <h2 class="image_info_text">
+                    Learners<span><i class="fa-solid fa-angle-right"></i></span>
+                  </h2>
+                  <p class="image_info_details">
+                    To start your driving lessons on the roads, UK law requires you to be
+                    aged 17 or over. You must hold a UK provisional license..
+                    <br />
+                    <br />
+                    <strong>Click to find out more</strong>
+                  </p>
+                </a>
+              </div>
+              <div class="image_tile">
+                <a href="{{ url_for('core.useful_info') }}">
+                  <img
+                    src="{{ url_for('static', filename='img/useful_info_tn.jpg') }}"
+                    alt="Stering Wheel"
+                  />
+                  <h2 class="image_info_text">
+                    Useful Links<span><i class="fa-solid fa-angle-right"></i></span>
+                  </h2>
+                  <p class="image_info_details">
+                    Useful Information and Resources that we recommend for Learners..
+                    <br />
+                    <br />
+                    <strong>Click to find out more</strong>
+                  </p>
+                </a>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="home_form">{% include '_contact_form.html' %}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<h2 class="pre-footer-message">More text here...</h2>
 
 {% endblock content %}

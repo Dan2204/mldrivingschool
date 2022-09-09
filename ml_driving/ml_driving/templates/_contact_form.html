@@ -40,8 +40,10 @@
       {% for error in form.details.errors %}
       <span class="comment-error">{{ error }}</span>
       {% endfor %} {{ form.details.label(class="form-label") }}<br />
-      {{ form.details(placeholder="Message...", class="form-control text-area", rows=8) }}
+      {{ form.details(placeholder="Message...", class="form-control text-area", rows=5) }}
     </p>
+
+    <!-- BOT SPAM CHECK HERE -->
     <h4 class="bot-message">
       <span>* </span>
       To help prevent automated spam, please answer the question below:
@@ -53,6 +55,11 @@
       <!-- Input -->
       {{ form.anti_bot(class="form-control bot") }}
     </p>
+    <!-- <div
+      class="g-recaptcha"
+      data-sitekey="6LePv6MhAAAAAHqQt9SsCmTiVyUyEAWXwkWMldsF"
+    ></div> -->
+
     <p>{{ form.submit(class="btn") }}</p>
   </div>
 </form>
