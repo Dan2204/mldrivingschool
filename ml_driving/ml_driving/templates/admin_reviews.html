@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+<!-- CONTENT -->
+
+{% block content %}
+
+<section class="admin-section">
+  <div class="provisional-info">
+    <div class="link-container-text">
+      <h2 class="head-title reviews">
+        <a
+          href="{{ url_for('admin.admin', user_id=current_user.id) }}"
+          class="admin__username"
+          >{{ current_user.name | title }}:</a
+        >
+        Reviews
+        <span class="admin-logout"
+          ><a href="{{ url_for('admin.logout') }}"> - Logout</a></span
+        >
+      </h2>
+
+      {% include '_admin_nav.html' %}
+    </div>
+  </div>
+
+  <div class="link-container-text admin__nav">{% include '_journey_sub-menu.html' %}</div>
+
+  <!-- REVIEWS -->
+  <div class="link-container-text">
+    <div class="admin__reviews-section">
+      <div class="admin__reviews-to-approve">
+        <h2>Reviews for approval: ({{ data['unapproved_reviews'] | length }})</h2>
+        {% for review in data['unapproved_reviews'] %}
+        <div class="admin_review">
+          <div class="admin__review-head">
+            <p class="admin_review_date">
+              <span>Created on:</span> {{ review.creation_date.strftime('%d-%m-%Y') }} @
+              {{ review.creation_date.strftime('%H:%M') }}
+            </p>
+            <div class="review-contact">
+              <p class="admin_review_name"><span>Name:</span> {{ review.name }}</p>
+              <p class="admin_review_email"><span>Email:</span> {{ review.email }}</p>
+            </div>
+          </div>
+          <p class="admin_review_review"><span>Review:</span> {{ review.review }}</p>
+
+          <!-- OPTIONS -->
+          <div class="review_options">
+            <a
+              href="{{ url_for('reviews.approve_review', review_id=review.id) }}"
+              class="review_approve"
+              >Approve</a
+            >
+            |
+            <a
+              href="{{ url_for('reviews.delete_review', review_id=review.id) }}"
+              class="review_delete"
+              >Delete</a
+            >
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="admin__reviews-to-approve">
+        <h2>Approved Reviews: ({{ data['approved_reviews'] | length }})</h2>
+        {% for review in data['approved_reviews'] %}
+
+        <div class="admin_review">
+          <div class="admin__review-head">
+            <p class="admin_review_date">
+              <span>Created on:</span> {{ review.creation_date.strftime('%d-%m-%Y') }} @
+              {{ review.creation_date.strftime('%H:%M') }}
+            </p>
+            <div class="review-contact">
+              <p class="admin_review_name"><span>Name:</span> {{ review.name }}</p>
+              <p class="admin_review_email"><span>Email:</span> {{ review.email }}</p>
+            </div>
+          </div>
+          <p class="admin_review_review"><span>Review:</span> {{ review.review }}</p>
+
+          <!-- OPTIONS -->
+          <div class="review_options">
+            <a
+              href="{{ url_for('reviews.delete_review', review_id=review.id) }}"
+              class="review_delete"
+              >Remove from approved</a
+            >
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <!-- REVIEWS - END -->
+
+  <div class="img-upload">{% include '_add_image.html' %}</div>
+  <div class="img-upload">{% include '_change_password.html' %}</div>
+
+  <h2 class="pre-footer-message go-top">
+    <a href="#page-top">Back to top <i class="fa-solid fa-arrow-up"></i></a>
+  </h2>
+</section>
+
+{% endblock content %}

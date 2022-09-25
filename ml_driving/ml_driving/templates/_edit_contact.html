@@ -1,0 +1,52 @@
+<!------------------------->
+<!--- EDIT CONTACT FORM --->
+<!------------------------->
+<div class="edit_contact-form-container">
+  <form
+    method="POST"
+    action="{{ url_for('admin.edit_contact', contact_id=contact.id) }}"
+    class="edit_contact-form"
+  >
+    {{ data['edit_contact_form'].csrf_token() }}
+    <h2 class="head-title new-password">Edit {{ contact.name }}:</h2>
+    <div class="form-group">
+      <p>
+        <!-- ERROR MESSAGES -->
+        {% for error in data['edit_contact_form'].name.errors %}
+        <span class="comment-error">{{ error }}</span>
+        {% endfor %}
+        <!-- CURRENT LABEL -->
+        {{ data['edit_contact_form'].name.label(class="form-label image-ul") }}<br />
+        <!-- CURRENT INPUT -->
+        {{ data['edit_contact_form'].name(class="form-control logging-input") }}
+      </p>
+
+      <p>
+        <!-- ERROR MESSAGES -->
+        {% for error in data['edit_contact_form'].email.errors %}
+        <span class="comment-error">{{ error }}</span>
+        {% endfor %}
+        <!-- NEW LABEL -->
+        {{ data['edit_contact_form'].email.label(class="form-label image-ul") }}<br />
+        <!-- NEW INPUT -->
+        {{ data['edit_contact_form'].email(class="form-control logging-input") }}
+      </p>
+
+      <p>
+        <!-- ERROR MESSAGES -->
+        {% for error in data['edit_contact_form'].phone.errors %}
+        <span class="comment-error">{{ error }}</span>
+        {% endfor %}
+        <!-- NEW LABEL -->
+        {{ data['edit_contact_form'].phone.label(class="form-label image-ul") }}<br />
+        <!-- NEW INPUT -->
+        {{ data['edit_contact_form'].phone(class="form-control logging-input") }}
+      </p>
+
+      <p>
+        {{ data['edit_contact_form'].submit_edit(class="btn btn-password",
+        id="btn-password") }}
+      </p>
+    </div>
+  </form>
+</div>

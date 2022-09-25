@@ -1,0 +1,50 @@
+<!------------------>
+<!--- IMAGE FORM --->
+<!------------------>
+<div class="image-form-container">
+  <form
+    method="POST"
+    action="{{ url_for('admin.add_images') }}"
+    enctype="multipart/form-data"
+    class="image-form"
+  >
+    {{ data['image_form'].hidden_tag() }}
+    <h2 class="head-title add-image">
+      <span id="img-form-head">Add</span> Gallery Image<span class="close" id="close"
+        ><i class="fa-solid fa-xmark"></i
+      ></span>
+    </h2>
+
+    <div class="form-group">
+      <p>
+        <!-- ERROR MESSAGES -->
+        {% for error in data['image_form'].image.errors %}
+        <span class="comment-error img-ul" id="img-ul-err">{{ error }}</span>
+        {% endfor %}
+      </p>
+      <!-- INPUT FIELD -->
+      <div class="post-img">
+        <label class="image-form-label" for="img-upload" id="on-post-image">
+          <h5 id="img-txt">
+            Add image:<br /><span id="img-filename"></span>
+            <i class="far fa-image"></i>
+            <span id="ul_img_file"></span>
+          </h5>
+        </label>
+        {{ data['image_form'].image(accept="image/*", id="img-upload",
+        class="message-img") }}
+      </div>
+      <p>
+        <!-- ERROR MESSAGES -->
+        {% for error in data['image_form'].pass_date.errors %}
+        <span class="comment-error modal">{{ error }}</span>
+        {% endfor %}
+        <!-- DATE INPUT -->
+        {{ data['image_form'].pass_date.label(class="form-label image-ul") }}<br />
+        {{ data['image_form'].pass_date(class="form-control image-ul-date") }}
+      </p>
+
+      <p>{{ data['image_form'].submit_image(class="btn btn-img", id="img-btn") }}</p>
+    </div>
+  </form>
+</div>

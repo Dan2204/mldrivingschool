@@ -1,0 +1,27 @@
+<!------------------------>
+<!--  ADMIN NAVIGATION  -->
+<!------------------------>
+
+<div class="admin-nav">
+  <div class="admin-nav__top">
+    <div class="admin-item link_img-ul">
+      <h2 id="add-img-modal" class="add-img-modal">Add Image</h2>
+    </div>
+    <div class="admin-item link_password">
+      <h2 id="change-pw-modal" class="change-pw-modal">Change Password</h2>
+    </div>
+  </div>
+  {% if current_user.admin %}
+  <div class="admin-nav__bottom">
+    <div class="admin-item">
+      <h2>
+        {% if title != "Users" %}
+        <a href="{{ url_for('users.users') }}">Users</a>
+        {% else %}
+        <a href="{{ url_for('users.create_user') }}">Add User</a>
+        {% endif %}
+      </h2>
+    </div>
+  </div>
+  {% endif %}
+</div>

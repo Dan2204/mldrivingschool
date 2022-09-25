@@ -1,3 +1,10 @@
+@media screen and (max-width: 1465px) {
+  .activity_content {
+    /* border: 1px solid cyan; */
+    grid-template-columns: repeat(auto-fit, minmax(25vw, 1fr));
+  }
+}
+
 @media screen and (max-width: 1200px) {
   .container {
     max-width: 950px;
@@ -44,6 +51,11 @@
 
   .price-std_img img {
     /* width: 120%; */
+  }
+
+  .activity_content {
+    /* border: 1px solid red; */
+    grid-template-columns: repeat(auto-fit, minmax(30vw, 1fr));
   }
 }
 

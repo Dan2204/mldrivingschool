@@ -4,15 +4,42 @@
 
 {% block content %}
 
-<section class="layout-section">
+<section class="gallery-section">
+  <div class="link-container-text">{% include '_journey_sub-menu.html' %}</div>
   <div class="provisional-info">
-    <div class="link-container">
-      <h1 class="head-title">Gallary</h1>
+    <div class="link-container-text">
+      <h2 class="head-title reviews">
+        <span class="icons image-icon">
+          <span class="icon empty"><i class="fa-regular fa-image"></i></span>
+          <span class="icon full"><i class="fa-solid fa-image"></i></span> </span
+        >Gallary
+      </h2>
+    </div>
+  </div>
+  <div class="gallery-content">
+    <div class="link-container-text">
+      <div class="gallery">
+        {% for image in images %}
+
+        <a
+          href="static/img/gallery/{{ image.image }}"
+          data-lightbox="Previous_Passes"
+          data-title="Pass Date: {{ image.pass_date.strftime('%d-%m-%Y') }}"
+        >
+          <img
+            src="{{ url_for('static', filename='img/gallery/' + image.image) }}"
+            alt="{{ image.image }}"
+          />
+        </a>
+
+        {% endfor %}
+      </div>
     </div>
   </div>
 
-  <!-- END OF LICENCE_APPLICATION -->
-  <h2 class="first-lesson-clothes spacer">More text here...</h2>
+  <h2 class="pre-footer-message go-top">
+    <a href="#page-top">Back to top <i class="fa-solid fa-arrow-up"></i></a>
+  </h2>
 </section>
 
 {% endblock content %}

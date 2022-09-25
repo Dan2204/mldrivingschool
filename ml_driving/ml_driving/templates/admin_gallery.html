@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+<!-- CONTENT -->
+
+{% block content %}
+
+<section class="admin-section">
+  <div class="provisional-info">
+    <div class="link-container-text">
+      <h2 class="head-title reviews">
+        <a
+          href="{{ url_for('admin.admin', user_id=current_user.id) }}"
+          class="admin__username"
+          >{{ current_user.name | title }}:</a
+        >
+        Gallery
+        <span class="admin-logout"
+          ><a href="{{ url_for('admin.logout') }}"> - Logout</a></span
+        >
+      </h2>
+
+      {% include '_admin_nav.html' %}
+    </div>
+  </div>
+
+  <div class="link-container-text admin__nav">{% include '_journey_sub-menu.html' %}</div>
+
+  <!-- IMAGES -->
+  <div class="link-container-text">
+    <div class="admin__gallery-section">
+      {% set count = namespace(value=1) %} {% set img_max = data['images'] | length %}
+      <!-- START IMAGE LOOP -->
+      {% for image in data['images'] %}
+      <div class="admin__image-card">
+        <div class="image-card__image">
+          <a
+            href="http://127.0.0.1:8000/static/img/gallery/{{ image.image }}"
+            target="blank"
+          >
+            <img
+              src="{{ url_for('static', filename='img/gallery/' + image.image) }}"
+              alt="gallery_image"
+            />
+          </a>
+        </div>
+        <div class="image-card__details">
+          <p class="img-count">{{ count.value }} of {{ img_max }}</p>
+          {% set count.value = count.value + 1 %}
+          <h4><span>Passdate:</span> {{ image.pass_date.strftime('%d-%m-%Y') }}</h4>
+          <p><span>Added by:</span> {{ image.image_user.name }}</p>
+          <p><span>Added on:</span> {{ image.creation_date.strftime('%d-%m-%Y') }}</p>
+          <div class="review_options">
+            <a
+              href="{{ url_for('admin.edit_image', image_id=image.id) }}"
+              class="review_edit"
+              >Edit</a
+            >
+            |
+            <a
+              href="{{ url_for('admin.delete_image', img_id=image.id) }}"
+              class="review_delete"
+              >Delete</a
+            >
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="img-upload">{% include '_add_image.html' %}</div>
+  <div class="img-upload">{% include '_change_password.html' %}</div>
+
+  <h2 class="pre-footer-message go-top">
+    <a href="#page-top">Back to top <i class="fa-solid fa-arrow-up"></i></a>
+  </h2>
+</section>
+
+{% endblock content %}

@@ -1,23 +1,23 @@
-<div class="journey__sub-menu">
+<div class="journey__sub-menu {% if title[:5] == 'Admin' %}admin-nav{% endif %}">
+  {% for item in sub_menu %}
+  <!-- CHECK IF ADMIN MENU -->
   <div
-    class="journey {% if title == sub_menu['option1']['option'] %}sub-active{% endif %}"
+    {%
+    if
+    current_user.is_authenticated
+    %}
+    class="journey {% if title == item['option'] or title == 'Admin - ' + item['option'] %}sub-active{% endif %} {% if data and data['has_new_reviews'] and item['option'] == 'Reviews'%}has-new{% endif %}"
+    {%
+    else
+    %}
+    class="journey {% if title == item['option'] %}sub-active{% endif %}"
+    {%
+    endif
+    %}
   >
-    <a href="{{ url_for(sub_menu['option1']['link']) }}"
-      >{{ sub_menu['option1']['option'] }}<i class="fa-solid fa-angle-right"></i
+    <a href="{{ url_for(item['link']) }}"
+      >{{ item['option'] }}<i class="fa-solid fa-angle-right"></i
     ></a>
   </div>
-  <div
-    class="journey {% if title == sub_menu['option2']['option'] %}sub-active{% endif %}"
-  >
-    <a href="{{ url_for(sub_menu['option2']['link']) }}"
-      >{{ sub_menu['option2']['option'] }}<i class="fa-solid fa-angle-right"></i
-    ></a>
-  </div>
-  <div
-    class="journey {% if title == sub_menu['option3']['option'] %}sub-active{% endif %}"
-  >
-    <a href="{{ url_for(sub_menu['option3']['link']) }}"
-      >{{ sub_menu['option3']['option'] }}<i class="fa-solid fa-angle-right"></i
-    ></a>
-  </div>
+  {% endfor %}
 </div>

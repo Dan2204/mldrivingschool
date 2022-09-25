@@ -1,0 +1,33 @@
+<!------------------>
+<!--- NOTE FORM --->
+<!------------------>
+<div class="note-form-container">
+  <form
+    method="POST"
+    action="{{ url_for('admin.add_note') }}"
+    enctype="multipart/form-data"
+    class="note-form"
+  >
+    {{ data['note_form'].csrf_token(id = "£$£@34_832")}}
+    <h2 class="head-title add-note">
+      <span id="img-form-head">Add</span> Note<span class="close" id="close"
+        ><i class="fa-solid fa-xmark"></i
+      ></span>
+    </h2>
+
+    <div class="form-group">
+      <p>
+        <!-- ERROR MESSAGES -->
+        {% for error in data['note_form'].note.errors %}
+        <span class="comment-error modal">{{ error }}</span>
+        {% endfor %}
+        <!-- DATE INPUT -->
+        {{ data['note_form'].note.label(class="form-label image-ul") }}<br />
+        {{ data['note_form'].note(class="form-control ") }}
+        <input type="text" name="contact_id" class="note-contact_id" />
+      </p>
+
+      <p>{{ data['note_form'].submit_note(class="btn btn-img", id="note-btn") }}</p>
+    </div>
+  </form>
+</div>

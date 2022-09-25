@@ -41,17 +41,31 @@
       type="text/css"
       href="{{ url_for('static', filename='styles/media.css') }}"
     />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles/lightbox.css') }}"
+    />
     <!-- <link rel="stylesheet" href="../static/css/style.css" /> -->
     <!-- END STYLESHEETS -->
-    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <script
+      src="{{ url_for('static', filename='js/lightbox-plus-jquery.js') }}"
+      defer
+    ></script>
   </head>
   <body>
+    {% if not title == "Login" %}
     <!-- CONTENT BODY -->
     <div class="bg-image"></div>
     <div class="container">
       <!-- NAVBAR -->
-      <header>
+      <header id="page-top">
         <section class="top">
+          {% if current_user.is_authenticated %}
+          <div class="admin-link">
+            <a href="{{ url_for('admin.admin', user_id=current_user.id) }}">Dashboard</a>
+          </div>
+          {% endif %}
           <div class="top-img">
             <div class="top-img-banner"></div>
             <div class="img_bg">
@@ -137,15 +151,15 @@
               <a href="{{ url_for('core.faqs') }}">FAQ's</a>
             </li>
             <li
-              class="nav-link {% if title == 'Reviews' or title == 'Gallary' %}active{% endif %}"
+              class="nav-link {% if title == 'Reviews' or title == 'Gallery' %}active{% endif %}"
               id="link-reviews"
             >
               <a
                 >Reviews<span><i class="fa-solid fa-caret-down"></i></span
               ></a>
               <ul class="dropdown" id="dd-reviews">
-                <li><a href="{{ url_for('core.reviews') }}">Reviews</a></li>
-                <li><a href="{{ url_for('core.gallary') }}">Success Gallary</a></li>
+                <li><a href="{{ url_for('reviews.reviews') }}">Reviews</a></li>
+                <li><a href="{{ url_for('core.gallery') }}">Success Gallary</a></li>
               </ul>
             </li>
             <li class="nav-link {% if title == 'Contact' %}active{% endif %}">
@@ -164,13 +178,16 @@
           {% endfor %} {% endif %} {% endwith %}
         </div>
       </div>
+      {% else %}
+      <div class="container-login">
+      {% endif %}
 
       <!-- JINJA2 CONTENT INSERT HERE -->
 
       {% block content %} {% endblock content %}
 
       <!-- END JINJA2 CONTENT -->
-
+      {% if not title == "Login" %}
       <div class="banner"></div>
       <footer class="content">
         <!-- <div class="content"> -->
@@ -223,9 +240,49 @@
         <!-- </div> -->
       </footer>
     </div>
+    {% endif %}
     <!-- END OF CONTAINER DIV -->
 
     <!-- JAVASCRIPT -->
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+      // SESSION STORAGE //
+      
+        let modals = { upload: false, password: false, note: false, contact_edit: false };
+        console.log(modals);
+        if (typeof Storage !== 'undefined') {
+          if (sessionStorage.getItem('upload') && sessionStorage.getItem('password') 
+              && sessionStorage.getItem('note') && sessionStorage.getItem('contact_edit')) {
+            modals.upload = sessionStorage.getItem('upload');
+            modals.password = sessionStorage.getItem('password');
+            modals.note = sessionStorage.getItem('note');
+            modals.contact_edit = sessionStorage.getItem('contact_edit');
+          } else {
+            sessionStorage.setItem('upload', 'closed');
+            sessionStorage.setItem('password', 'closed');
+            sessionStorage.setItem('note', 'closed');
+            sessionStorage.setItem('contact_edit', 'closed');
+          }
+        } else {
+          console.error('Session Storage unavailable... site may not run as expected');
+        }
+
+        console.log('Modals:');
+        console.log(modals);
+        
+        {% if data and data['options']['close_modal'] != None %}
+        console.log('Closing password modal')
+        toggleModalElement(passwordModal, 'password', 'closed');
+        toggleModalElement(imgModal, 'upload', 'closed');
+        toggleModalElement(noteModal, 'note', 'closed');
+        {% endif %}
+        console.log(modals);
+      
+    </script>
+
+    {% block script %}{% endblock %}
+
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

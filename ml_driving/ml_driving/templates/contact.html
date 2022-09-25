@@ -7,55 +7,61 @@
 <section class="contact-section">
   <div class="provisional-info">
     <div class="link-container-text">
-      <div class="map-pin"><i class="fa-solid fa-map-pin"></i></div>
+      <div class="map-pin link-icon"><i class="fa-solid fa-map-pin"></i></div>
       <div class="icon-contact"><i class="fa-regular fa-address-book"></i></div>
-      <h1 class="head-title">Contact</h1>
+      <h1 class="head-title">Contact Us</h1>
     </div>
   </div>
   <div class="contact-content">
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d619.6644089583558!2d-2.7601240707171533!3d51.59283779872811!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4871eba0cbf80d6d%3A0x89434c040b2b7316!2sThe%20Cl%2C%20Caldicot%20NP26%204EF!5e0!3m2!1sen!2suk!4v1662745674921!5m2!1sen!2suk"
-      width="600"
-      height="450"
-      style="border: 0"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      class="google-maps"
-    ></iframe>
     <div class="link-container-text">
       <div class="contact-content__info">
         <div class="contact__form">{% include '_contact_form.html' %}</div>
         <div class="contact__info">
           <div class="contact__info-card">
-            <div class="contact__info-head">Get In Touch</div>
+            <div class="contact__info-head">
+              <h2>Get In Touch:</h2>
+            </div>
+            <div class="contact__info-map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d619.6644089583558!2d-2.7601240707171533!3d51.59283779872811!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4871eba0cbf80d6d%3A0x89434c040b2b7316!2sThe%20Cl%2C%20Caldicot%20NP26%204EF!5e0!3m2!1sen!2suk!4v1662745674921!5m2!1sen!2suk"
+                width="600"
+                height="450"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                class="google-maps"
+              ></iframe>
+            </div>
             <div class="contact__info-body">
               <h3 class="title-company">Matt Lucas Driving School</h3>
-              <ul>
-                <li>10 The Close</li>
-                <li>Caldicot</li>
-                <li>Monmouthshire</li>
-                <li>NP26 4EF</li>
+              <ul class="contact__address">
+                <li class="address__line">10 The Close</li>
+                <li class="address__line">Caldicot</li>
+                <li class="address__line last">Monmouthshire</li>
+                <li class="address__line pc">NP26 4EF</li>
               </ul>
               <div class="phone">
                 <p>Mobile: <span>07528 037900</span></p>
               </div>
-              <div class="social">
-                <p>Email: <a href="#">info@mldrivingschool.co.uk</a></p>
-                <p>Web: <a href="#">www.mldrivingschool.co.uk</a></p>
+              <div class="social-contact">
+                <p>Email: <a href="#" class="text-link">info@mldrivingschool.co.uk</a></p>
+                <p>Web: <a href="#" class="text-link">www.mldrivingschool.co.uk</a></p>
               </div>
-              <a
-                href="https://www.facebook.com/Matt-Lucas-Driving-School-101466052674579"
-                target="blank"
-                class="facebook-icon__contact"
-                ><i class="fa-brands fa-facebook"></i
-              ></a>
-              <a
-                href="https://www.instagram.com/drivewithmatt72/"
-                target="blank"
-                class="instagram-icon__contact"
-                ><i class="fa-brands fa-instagram"></i
-              ></a>
+              <div class="social-media">
+                <a
+                  href="https://www.facebook.com/Matt-Lucas-Driving-School-101466052674579"
+                  target="blank"
+                  class="facebook-icon__contact"
+                  ><i class="fa-brands fa-facebook"></i
+                ></a>
+                <a
+                  href="https://www.instagram.com/drivewithmatt72/"
+                  target="blank"
+                  class="instagram-icon__contact"
+                  ><i class="fa-brands fa-instagram"></i
+                ></a>
+              </div>
             </div>
           </div>
         </div>
@@ -64,7 +70,7 @@
   </div>
 
   <!-- END OF LICENCE_APPLICATION -->
-  <h2 class="first-lesson-clothes spacer">More text here...</h2>
+  <h2 class="pre-footer-message">More text here...</h2>
 </section>
 
 {% endblock content %}

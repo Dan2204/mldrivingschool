@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+
+<!-- CONTENT -->
+
+{% block content %}
+
+<section class="admin-section">
+  <div class="provisional-info">
+    <div class="link-container-text">
+      <h2 class="head-title reviews">
+        <a
+          href="{{ url_for('admin.admin', user_id=current_user.id) }}"
+          class="admin__username"
+          >{{ current_user.name | title }}:</a
+        >
+        Contacts
+        <span class="admin-logout"
+          ><a href="{{ url_for('admin.logout') }}"> - Logout</a></span
+        >
+      </h2>
+
+      {% include '_admin_nav.html' %}
+    </div>
+  </div>
+
+  <div class="link-container-text admin__nav">{% include '_journey_sub-menu.html' %}</div>
+
+  <!-- CONTACTS -->
+  <div class="link-container-text">
+    <div class="admin__contact-section">
+      {% for contact in contacts | reverse %}
+      <div class="admin__contact-card {% if not contact.active %}closed{% endif %}">
+        <div class="admin__contact-body">
+          <div class="flex-col">
+            <div class="admin__contact-name"><span>Name:</span> {{ contact.name }}</div>
+            <div class="admin__contact-email">
+              <span>Email:</span> {{ contact.email }}
+            </div>
+          </div>
+          <div class="flex-col">
+            <div class="admin__contact-phone">
+              <span>Phone:</span> {{ contact.phone }}
+            </div>
+            <div class="admin__contact-created_date">
+              <span>Created on:</span> {{ contact.creation_date.strftime('%d-%m-%Y') }} @
+              {{ contact.creation_date.strftime('%H:%M') }}
+            </div>
+          </div>
+          <h4 class="admin__contact-dropdowns">
+            Review:
+            <span><i class="fa-solid fa-angle-down"></i></span>
+          </h4>
+          <div class="admin__review-card-body">
+            {% if contact.reviews | list | length > 0 %} {% for review in contact.reviews
+            %}
+            <div class="admin__contact-review-date">
+              <span>Left on:</span> {{ review.creation_date.strftime('%d-%m-%Y') }}
+            </div>
+            <div class="admin__contact-review">
+              <span>Review:</span> {{ review.review }}
+            </div>
+            {% endfor %} {% else %}
+            <p>No Review.</p>
+            {% endif %}
+          </div>
+          <h4 class="admin__contact-dropdowns">
+            Notes: ({{ contact.notes | list | length }})
+            <span><i class="fa-solid fa-angle-down"></i></span>
+          </h4>
+          <div class="admin__notes-card-body">
+            {% for note in contact.notes %}
+            <div class="contact_note-card">
+              <div class="flex-col">
+                <div class="contact_note-type">
+                  <span>Type:</span> {{ note.note_type }}
+                </div>
+                <div class="contact_note-user">
+                  <span>Created by:</span> {% if note.note_user == None %}System{% else
+                  %}{{ note.note_user.name }}{% endif %}
+                </div>
+              </div>
+              <div class="contact_note-created_date">
+                <span>Created:</span> {{ note.creation_date.strftime('%d-%m-%Y') }} @ {{
+                note.creation_date.strftime('%H:%M') }}
+              </div>
+              <div class="contact_note-note"><span>note:</span>{{ note.note }}</div>
+              {% if note.note_type[:7] != "Website" %} {% if contact.active %}
+              <div class="contact_note-delete">
+                <a href="{{ url_for('admin.delete_note', note_id=note.id) }}">Delete</a>
+              </div>
+              {% endif %} {% endif %}
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="admin__contact-options">
+          {% if contact.active %}
+          <h2 id="add-note-modal" class="add-note-modal" data-contact="{{ contact.id }}">
+            Add Note
+          </h2>
+          <a href="{{ url_for('admin.edit_contact', contact_id=contact.id) }}"
+            >Edit Contact</a
+          >
+          {% endif %} {% if contact.active %}
+          <a href="{{ url_for('admin.close_contact', contact_id=contact.id) }}"
+            >Deactivate</a
+          >
+          {% else %}
+          <a href="{{ url_for('admin.reactivate_contact', contact_id=contact.id) }}"
+            >Reactivate</a
+          >
+          <a href="{{ url_for('admin.remove_contact', contact_id=contact.id) }}"
+            >Delete</a
+          >
+          {% endif %}
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
+  </div>
+  <!-- REVIEWS - END -->
+
+  <div class="img-upload">{% include '_add_note.html' %}</div>
+  <div class="img-upload">{% include '_add_image.html' %}</div>
+  <div class="img-upload">{% include '_change_password.html' %}</div>
+
+  <h2 class="pre-footer-message go-top">
+    <a href="#page-top">Back to top <i class="fa-solid fa-arrow-up"></i></a>
+  </h2>
+</section>
+
+{% endblock content %}
+
+<!-- ####### -->
+<!-- PAGE JS -->
+<!-- ####### -->
+{% block script %}
+<script type="text/javascript">
+
+  {% include 'js/contact_cards.js' %}
+</script>
+
+{% endblock %}

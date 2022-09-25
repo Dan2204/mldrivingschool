@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+<!-- CONTENT -->
+
+{% block content %}
+
+<section class="admin-section">
+  <div class="provisional-info">
+    <div class="link-container-text">
+      <h2 class="head-title reviews">
+        <a
+          href="{{ url_for('admin.admin', user_id=current_user.id) }}"
+          class="admin__username"
+          >{{ current_user.name | title }}:</a
+        >
+        Users
+        <span class="admin-logout"
+          ><a href="{{ url_for('admin.logout') }}"> - Logout</a></span
+        >
+      </h2>
+
+      {% include '_admin_nav.html' %}
+    </div>
+  </div>
+
+  <div class="link-container-text admin__nav">{% include '_journey_sub-menu.html' %}</div>
+
+  <!-- USERS-->
+  <div class="link-container-text">
+    <div class="admin__contact-section">
+      {% if users | list | length > 1 %} {% for user in users | reverse %} {% if user.name
+      != 'admin' %}
+      <div class="admin__contact-card {% if not user.active %}closed{% endif %}">
+        <div class="admin__contact-body users">
+          <div class="flex-col">
+            <div class="admin__contact-name"><span>Name:</span> {{ user.name }}</div>
+            <div class="admin__contact-email"><span>Email:</span> {{ user.email }}</div>
+          </div>
+          <div class="flex-col">
+            <div class="admin__contact-phone">
+              <span>Administrator:</span> {% if user.admin %}Yes{% else %}No{% endif %}
+            </div>
+            <div class="admin__contact-created_date">
+              <span>Created on:</span> {{ user.creation_date.strftime('%d-%m-%Y') }}
+            </div>
+          </div>
+        </div>
+        <div class="admin__contact-options users">
+          {% if user.active %}
+          <a href="{{ url_for('admin.activities', user_id=user.id) }}">View Activity</a>
+
+          <a href="{{ url_for('users.edit_user', user_id=user.id) }}">Edit User</a>
+          <a href="{{ url_for('users.edit_user_password', user_id=user.id) }}"
+            >Change Password</a
+          >
+          {% endif %} {% if user.active %}
+          <a href="{{ url_for('users.close_user', user_id=user.id) }}">Deactivate</a>
+          {% else %}
+          <a href="{{ url_for('users.reactivate_user', user_id=user.id) }}">Reactivate</a>
+          {% if user.id != current_user.id %}
+          <a href="{{ url_for('users.remove_user', user_id=user.id) }}">Delete</a>
+          {% endif %} {% endif %}
+        </div>
+      </div>
+      {% endif %} {% endfor %} {% else %}
+      <h3>No Users.</h3>
+      {% endif %}
+    </div>
+  </div>
+  <!-- USERS - END -->
+
+  <div class="img-upload">{% include '_add_image.html' %}</div>
+  <div class="img-upload">{% include '_change_password.html' %}</div>
+
+  <h2 class="pre-footer-message go-top">
+    <a href="#page-top">Back to top <i class="fa-solid fa-arrow-up"></i></a>
+  </h2>
+</section>
+
+{% endblock content %}
+
+<!-- ####### -->
+<!-- PAGE JS -->
+<!-- ####### -->
+{% block script %} {% endblock %}

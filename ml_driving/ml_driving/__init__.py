@@ -29,9 +29,9 @@ Migrate(app, db, render_as_batch=True)
 #---- LOGIN MANAGER SETUP ----
 #-----------------------------
 
-# login_manager = LoginManager()
-# login_manager.init_app(app)
-# login_manager.login_view = 'users.login'
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'admin.login'
 
 
 #-------------------------
@@ -39,7 +39,13 @@ Migrate(app, db, render_as_batch=True)
 #-------------------------
 
 from ml_driving.core.views import bp as core
+from ml_driving.admin.views import bp as admin
+from ml_driving.users.views import bp as users
+from ml_driving.reviews.views import bp as reviews
 
 
 app.register_blueprint(core)
+app.register_blueprint(admin)
+app.register_blueprint(users)
+app.register_blueprint(reviews)
 

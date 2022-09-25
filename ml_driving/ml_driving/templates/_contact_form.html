@@ -2,8 +2,11 @@
 <!-- CONTACT FORM -->
 <!------------------>
 <form method="POST" class="contact-form">
-  {{ form.hidden_tag() }}
-  <h2 class="head-title form">Contact Us</h2>
+  {{ form.hidden_tag() }} {% if form_title %}
+  <h2 class="head-title form">{{ form_title }}</h2>
+  {% else %}
+  <h2 class="head-title form">Contact Us:</h2>
+  {% endif %}
   <div class="form-group">
     <p>
       <!-- <span class="comment-error">Input error message</span> -->

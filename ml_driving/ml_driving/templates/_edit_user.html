@@ -1,0 +1,46 @@
+<!------------------------->
+<!--- EDIT USER FORM --->
+<!------------------------->
+<div class="edit_user-form-container">
+  <form
+    method="POST"
+    action="{{ url_for('users.edit_user', user_id=user.id) }}"
+    class="edit_user-form"
+  >
+    {{ data['edit_user_form'].csrf_token() }}
+    <h2 class="head-title new-password">Edit {{ user.name }}:</h2>
+    <div class="form-group">
+      <p>
+        <!-- ERROR MESSAGES -->
+        {% for error in data['edit_user_form'].name.errors %}
+        <span class="comment-error">{{ error }}</span>
+        {% endfor %}
+        <!-- CURRENT LABEL -->
+        {{ data['edit_user_form'].name.label(class="form-label image-ul") }}<br />
+        <!-- CURRENT INPUT -->
+        {{ data['edit_user_form'].name(class="form-control logging-input") }}
+      </p>
+
+      <p>
+        <!-- ERROR MESSAGES -->
+        {% for error in data['edit_user_form'].email.errors %}
+        <span class="comment-error">{{ error }}</span>
+        {% endfor %}
+        <!-- NEW LABEL -->
+        {{ data['edit_user_form'].email.label(class="form-label image-ul") }}<br />
+        <!-- NEW INPUT -->
+        {{ data['edit_user_form'].email(class="form-control logging-input") }}
+      </p>
+
+      <p id="checkbox-container">
+        {{ data['edit_user_form'].admin.label(class="form-label-cb", id="admin-label") }}
+        {{ data['edit_user_form'].admin(id="admin-checkbox") }}
+      </p>
+
+      <p>
+        {{ data['edit_user_form'].submit_update(class="btn btn-password",
+        id="btn-password") }}
+      </p>
+    </div>
+  </form>
+</div>

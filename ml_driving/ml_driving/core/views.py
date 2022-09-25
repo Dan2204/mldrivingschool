@@ -1,7 +1,11 @@
+import datetime
 from ml_driving.core import bp
 from ml_driving.core.form import ContactForm
-from ml_driving.core.process_form import process_form
-from ml_driving.core.menu_items import price_menu, journey_menu
+from ml_driving.models import Contact, ContactNote, Image
+from ml_driving.admin.process_form import format_contact_form, format_error_form
+from ml_driving.admin.notifications import send_notification
+from ml_driving.admin.form_db_process import add_contact
+from ml_driving.core.menu_items import price_menu, journey_menu, review_menu
 
 from flask import render_template, redirect, url_for, flash, request
 from flask_login import current_user, login_required
@@ -14,13 +18,17 @@ def home():
   back = request.referrer
   
   if form.validate_on_submit():
-    if process_form(form):
-      flash("Message Sent, Please wait for reply.")
-    else:
-      flash("Error sending message, please call MLDS")
+    has_error = add_contact(form)    
+    if has_error[0]:
+      send_notification(format_error_form(form, has_error[1]))
+    else: 
+      if send_notification(format_contact_form(form)):
+        flash("Message Sent, Please wait for reply.")
+      else:
+        flash("Error sending message, please call MLDS")
     return redirect(back)
   
-  return render_template('home.html', title="Home", form=form)
+  return render_template('home.html', title="Home", form=form, form_title="Get in touch:" )
 
 
 @bp.route('/about')
@@ -36,10 +44,14 @@ def standard():
   sub_menu = price_menu
   
   if form.validate_on_submit():
-    if process_form(form):
-      flash("Message Sent, Please wait for reply.")
-    else:
-      flash("Error sending message, please call MLDS")
+    has_error = add_contact(form)    
+    if has_error[0]:
+      send_notification(format_error_form(form, has_error[1]))
+    else: 
+      if send_notification(format_contact_form(form)):
+        flash("Message Sent, Please wait for reply.")
+      else:
+        flash("Error sending message, please call MLDS")
     return redirect(back)
   
   return render_template('plan_std.html', title="Standard", sub_menu=sub_menu, form=form)
@@ -53,13 +65,18 @@ def intensive():
   sub_menu = price_menu
   
   if form.validate_on_submit():
-    if process_form(form):
-      flash("Message Sent, Please wait for reply.")
-    else:
-      flash("Error sending message, please call MLDS")
+    has_error = add_contact(form)    
+    if has_error[0]:
+      send_notification(format_error_form(form, has_error[1]))
+    else: 
+      if send_notification(format_contact_form(form)):
+        flash("Message Sent, Please wait for reply.")
+      else:
+        flash("Error sending message, please call MLDS")
     return redirect(back)
   
-  return render_template('plan_intense.html', title="Intensive", sub_menu=sub_menu, form=form)
+  return render_template('plan_intense.html', title="Intensive", sub_menu=sub_menu, 
+                         form=form, form_title="Ask a question:")
 
 
 @bp.route('/plans/refresher', methods=['GET', 'POST'])
@@ -70,13 +87,18 @@ def refresher():
   sub_menu = price_menu
   
   if form.validate_on_submit():
-    if process_form(form):
-      flash("Message Sent, Please wait for reply.")
-    else:
-      flash("Error sending message, please call MLDS")
+    has_error = add_contact(form)    
+    if has_error[0]:
+      send_notification(format_error_form(form, has_error[1]))
+    else: 
+      if send_notification(format_contact_form(form)):
+        flash("Message Sent, Please wait for reply.")
+      else:
+        flash("Error sending message, please call MLDS")
     return redirect(back)
   
-  return render_template('plan_refresher.html', title="Refresher", sub_menu=sub_menu, form=form)
+  return render_template('plan_refresher.html', title="Refresher", 
+                         sub_menu=sub_menu, form=form, form_title="Ask a question:")
 
 
 @bp.route('/journey/eligibility')
@@ -113,14 +135,12 @@ def faqs():
   return render_template('faq.html', title="FAQ's")
 
 
-@bp.route('/reviews')
-def reviews():
-  return render_template('reviews.html', title="Reviews")
-
-
-@bp.route('/gallary')
-def gallary():
-  return render_template('gallary.html', title="Gallary")
+@bp.route('/gallery')
+def gallery():
+  
+  images = Image.query.all()
+  
+  return render_template('gallary.html', title="Gallery", sub_menu=review_menu, images=images)
 
 
 @bp.route('/contact', methods=['GET', 'POST'])
@@ -130,12 +150,17 @@ def contact():
   back = request.referrer
   
   if form.validate_on_submit():
-    if process_form(form):
-      flash("Message Sent, Please wait for reply.")
-    else:
-      flash("Error sending message, please call MLDS")
+    has_error = add_contact(form)    
+    if has_error[0]:
+      send_notification(format_error_form(form, has_error[1]))
+    else: 
+      if send_notification(format_contact_form(form)):
+        flash("Message Sent, Please wait for reply.")
+      else:
+        flash("Error sending message, please call MLDS")
     return redirect(back)
   
-  return render_template('contact.html', title="Contact", form=form)
+  # return render_template('contact.html', title="Contact", form=form)
+  return render_template('contact.html', title="Contact", form=form, form_title="Ask a question:")
 
 

@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+<!-- CONTENT -->
+
+{% block content %}
+
+<section class="create-section">
+  <div class="provisional-info">
+    <div class="link-container-text">
+      <h2 class="head-title reviews">
+        <a
+          href="{{ url_for('admin.admin_users', user_id=current_user.id) }}"
+          class="admin__username"
+          >{{ current_user.name }}</a
+        >: Create User
+        <span class="admin-logout"
+          ><a href="{{ url_for('users.users') }}"> - Back to users</a></span
+        >
+      </h2>
+    </div>
+  </div>
+
+  <div class="link-container-text admin__edit-form">
+    <div class="create_user-form-container">
+      <form
+        method="POST"
+        action="{{ url_for('users.create_user') }}"
+        class="create_user-form"
+      >
+        {{ data['add_user_form'].csrf_token() }}
+        <h2 class="head-title new-password">Enter Details:</h2>
+        <div class="form-group">
+          <p>
+            <!-- ERROR MESSAGES -->
+            {% for error in data['add_user_form'].name.errors %}
+            <span class="comment-error">{{ error }}</span>
+            {% endfor %}
+            <!-- CURRENT LABEL -->
+            {{ data['add_user_form'].name.label(class="form-label image-ul") }}<br />
+            <!-- CURRENT INPUT -->
+            {{ data['add_user_form'].name(class="form-control logging-input") }}
+          </p>
+
+          <p>
+            <!-- ERROR MESSAGES -->
+            {% for error in data['add_user_form'].email.errors %}
+            <span class="comment-error">{{ error }}</span>
+            {% endfor %}
+            <!-- NEW LABEL -->
+            {{ data['add_user_form'].email.label(class="form-label image-ul") }}<br />
+            <!-- NEW INPUT -->
+            {{ data['add_user_form'].email(class="form-control logging-input") }}
+          </p>
+
+          <p>
+            <!-- ERROR MESSAGES -->
+            {% for error in data['add_user_form'].password.errors %}
+            <span class="comment-error">{{ error }}</span>
+            {% endfor %}
+            <!-- NEW LABEL -->
+            {{ data['add_user_form'].password.label(class="form-label image-ul") }}<br />
+            <!-- NEW INPUT -->
+            {{ data['add_user_form'].password(class="form-control logging-input") }}
+          </p>
+
+          <p>
+            <!-- ERROR MESSAGES -->
+            {% for error in data['add_user_form'].password_conf.errors %}
+            <span class="comment-error">{{ error }}</span>
+            {% endfor %}
+            <!-- NEW LABEL -->
+            {{ data['add_user_form'].password_conf.label(class="form-label image-ul")
+            }}<br />
+            <!-- NEW INPUT -->
+            {{ data['add_user_form'].password_conf(class="form-control logging-input") }}
+          </p>
+          <p id="checkbox-container">
+            {{ data['add_user_form'].admin.label(class="form-label-cb", id="admin-label")
+            }} {{ data['add_user_form'].admin(id="admin-checkbox") }}
+          </p>
+
+          <p>
+            {{ data['add_user_form'].submit_create(class="btn btn-password",
+            id="btn-password") }}
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

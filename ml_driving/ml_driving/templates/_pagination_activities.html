@@ -1,0 +1,26 @@
+<!-- Page pagination -->
+<ul class="pagination">
+  <li class="page-item {% if not pages.has_prev %}none{% endif %}">
+    <a
+      class="page-link"
+      href="{{ url_for('admin.activities', user_id=user.id, page=pages.prev_num) }}"
+      >Previous</a
+    >
+  </li>
+  {% for page in pages.iter_pages() %} {% if page != None %}
+  <li class="page-item number {% if page == pages.page %}current{% endif %}">
+    <a
+      class="page-link"
+      href="{{ url_for('admin.activities', user_id=user.id, page=page) }}"
+      >{{ page }}</a
+    >
+  </li>
+  {% endif %} {% endfor %}
+  <li class="page-item {% if not pages.has_next %}none{% endif %}">
+    <a
+      class="page-link"
+      href="{{ url_for('admin.activities', user_id=user.id, page=pages.next_num) }}"
+      >Next</a
+    >
+  </li>
+</ul>

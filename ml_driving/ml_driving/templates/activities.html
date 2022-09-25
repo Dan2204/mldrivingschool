@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+<!-- CONTENT -->
+
+{% block content %}
+
+<section class="admin-section">
+  <div class="provisional-info">
+    <div class="link-container-text">
+      <h2 class="head-title reviews">
+        <a 
+        href="{{ url_for('admin.admin', user_id=current_user.id) }}"  
+        class="admin__username">
+        {{ user.name | title }}:</a
+        > Activity 
+        <span class="admin-logout"
+        ><a href="{{ url_for('admin.logout') }}"> - Logout</a></span
+        >
+      </h2>
+    </div>
+  </div>
+
+  <div class="link-container-text">
+  <div class="activity_back"><a href="{{ url_for('admin.admin', user_id=current_user.id) }}"><i class="fa-solid fa-angle-left"></i>Back to dashboard</a></div>
+  </div>
+
+
+  <!-- USER_ACTIVITY -->
+    <div class="link-container-text">
+      <div class="admin__activity-section">
+        <div class="admin__user-activities">
+          <div class="title__pagination">
+            <h2>{{ activities }} Activities: 
+              {% if pages.has_next or pages.has_prev %}
+              ({{ pages.page * pages.per_page - (pages.per_page - 1) }} - {{ (pages.page * pages.per_page - pages.per_page) + pages.items | length  }})
+              {% endif %}
+            </h2>
+            {% if pages.has_next or pages.has_prev %}
+            {% include '_pagination_activities.html' %}
+            {% endif %}
+          </div>
+          <div class="activity_content">
+            {% for activity in pages.items %}
+            <div class="activity">
+              <p class="admin_activity_date"><span>Date:</span> {{ activity.creation_date.strftime('%d-%m-%Y') }} @ {{
+                activity.creation_date.strftime('%H:%M') }}</p>
+              <p class="admin_activity_activity">
+                {% set activity_split = activity.activity.split(':') %}
+                <!-- CHECK IF IMAGE -->
+                {% if "img_" in activity.activity %}
+                  {% set img_path = activity_split[1] | trim %}
+                  <div class="activity_image">
+                    <span>{{ activity_split[0] | trim }}:</span><br />
+                    <a href="http://127.0.0.1:8000/static/img/gallery/{{ img_path }}" target="blank">{{ img_path }}</a>
+                    <img src="{{ url_for('static', filename='img/gallery/' + img_path) }}" alt="gallery_image">
+                  </div>
+                {% else %}
+                  <span>{{ activity_split[0] }}: </span><br/>{{ activity_split[1] }}
+                {% endif %}
+              </p>
+              <br />
+            </div>
+      
+      
+            {% endfor %}
+          </div>
+          <div class="bottom_pagination">
+          {% if pages.has_next or pages.has_prev %}
+            {% include '_pagination_activities.html' %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- USER_ACTIVITY - END -->
+
+
+  <h2 class="pre-footer-message go-top">
+    <a href="#page-top">Back to top <i class="fa-solid fa-arrow-up"></i></a>
+  </h2>
+</section>
+
+{% endblock content %}

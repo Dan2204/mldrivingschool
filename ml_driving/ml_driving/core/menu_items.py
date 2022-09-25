@@ -1,29 +1,55 @@
-price_menu = {
-    "option1": {
-      "option": "Standard",
-      "link": "core.standard",
-    },
-    "option2": {
-      "option": "Intensive",
-      "link": "core.intensive",
-    },
-    "option3": {
-      "option": "Refresher",
+price_menu = [
+  {
+    "option": "Standard",
+    "link": "core.standard",
+  },
+  {
+    "option": "Intensive",
+    "link": "core.intensive",
+  },
+  {
+    "option": "Refresher",
       "link": "core.refresher",
-    },
-  }
+   },
+]
 
-journey_menu = {
-    "option1": {
+journey_menu = [
+  {
       "option": "Eligibility",
       "link": "core.eligibility",
-    },
-    "option2": {
+  },
+  {
       "option": "Theory",
       "link": "core.theory",
-    },
-    "option3": {
+  },
+  {
       "option": "Practical",
       "link": "core.practical",
-    },
   }
+]
+
+review_menu = [
+  {
+      "option": "Reviews",
+      "link": "reviews.reviews",
+  },
+  {
+      "option": "Gallery",
+      "link": "core.gallery",
+  }
+]
+
+admin_menu = [
+  {
+      "option": "Gallery",
+      "link": "admin.admin_gallery",
+  },
+  {
+      "option": "Reviews",
+      "link": "admin.admin_reviews",
+  },
+  {
+      "option": "Contacts",
+      "link": "admin.admin_contacts",
+  }
+]

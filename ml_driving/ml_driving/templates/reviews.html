@@ -4,15 +4,42 @@
 
 {% block content %}
 
-<section class="layout-section">
+<section class="reviews-section">
+  <div class="link-container-text">{% include '_journey_sub-menu.html' %}</div>
   <div class="provisional-info">
-    <div class="link-container">
-      <h1 class="head-title">Reviews</h1>
+    <div class="link-container-text">
+      <h2 class="head-title reviews">
+        <div class="ratings-img">
+          <img
+            src="{{ url_for('static', filename='img/rating_2.jpg') }}"
+            alt="Matt Lucas"
+          />
+        </div>
+        <span class="icons stars">
+          <span class="icon empty"><i class="fa-regular fa-star"></i></span>
+          <span class="icon full"><i class="fa-solid fa-star"></i></span> </span
+        >Reviews
+      </h2>
+    </div>
+  </div>
+  <div class="review-section">
+    <div class="link-container-text reviews">
+      <a href="#review-form" class="review-link__form"
+        >Leave a review <i class="fa-solid fa-arrow-down"></i
+      ></a>
+      {% for review in reviews %}
+      <div class="review">
+        <p class="review-message">"{{ review["review"] }}"</p>
+        <h4 class="review-author">-{{ review["name"] }}</h4>
+      </div>
+      {% endfor %}
+      <div id="review-form" class="form-review">{% include '_review_form.html' %}</div>
     </div>
   </div>
 
-  <!-- END OF LICENCE_APPLICATION -->
-  <h2 class="first-lesson-clothes spacer">More text here...</h2>
+  <h2 class="pre-footer-message go-top">
+    <a href="#page-top">Back to top <i class="fa-solid fa-arrow-up"></i></a>
+  </h2>
 </section>
 
 {% endblock content %}
