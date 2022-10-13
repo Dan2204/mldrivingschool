@@ -8,6 +8,8 @@ const linkReviews = document.getElementById('link-reviews');
 const toggleBtn = document.getElementById('toggle-btn');
 const navLinks = document.getElementById('nav-links');
 const accordionItems = document.querySelectorAll('.accordion-item');
+const toggleBtnclose = document.querySelector('.nav-toggle-close');
+const navLinkContent = document.querySelector('.nav-link-body');
 
 // NAVIGATION LINK ITEMS AND DROPDOWN ITEMS //
 linkCourses.addEventListener('click', () => {
@@ -35,8 +37,41 @@ document.addEventListener('click', (e) => {
   ddReviews.classList.remove('show');
 });
 
+// toggleBtn.addEventListener('click', () => {
+//   navLinks.classList.toggle('show-menu');
+// });
+
 toggleBtn.addEventListener('click', () => {
-  navLinks.classList.toggle('show-menu');
+  navLinkContent.classList.toggle('display');
+  if (navLinkContent.classList.contains('display')) {
+    navLinkContent.style.maxHeight = navLinkContent.scrollHeight + 'px';
+    toggleBtn.firstElementChild.style.display = 'none';
+    toggleBtnclose.style.display = 'inline-block';
+  } else {
+    navLinkContent.style.maxHeight = 0;
+    // navLinkContent.style.maxHeight = 0;
+    toggleBtn.firstElementChild.style.display = 'inline-block';
+    toggleBtnclose.style.display = 'none';
+  }
+});
+
+const mq = window.matchMedia('(min-width: 591px)');
+mq.addEventListener('change', () => {
+  if (mq.matches) {
+    navLinkContent.removeAttribute('style');
+    navLinkContent.classList.remove('display');
+  }
+});
+const mq2 = window.matchMedia('(max-width: 350px)');
+mq2.addEventListener('change', () => {
+  const reviewInput = document.getElementById('review-email-input');
+  if (reviewInput) {
+    if (mq2.matches) {
+      reviewInput.placeholder = '(Not Published)';
+    } else {
+      reviewInput.placeholder = '(Will not be published)';
+    }
+  }
 });
 
 // ACCORDION ITEMS //
@@ -49,18 +84,26 @@ accordionItems.forEach((item) => {
     if (item.classList.contains('active')) {
       itemBody.style.maxHeight = itemBody.scrollHeight + 'px';
       labelArrow.style.transform = 'rotate(180deg)';
+      labelArrow.style.top = '0.5em';
       accordionItems.forEach((resetItem) => {
         const resetItemLabel = resetItem.firstElementChild;
         if (resetItemLabel !== itemLabel) {
           const arrow = resetItemLabel.firstElementChild.firstElementChild;
-          resetItemLabel.nextElementSibling.style.maxHeight = 0;
-          arrow.style.transform = 'rotate(0deg)';
+          // resetItemLabel.nextElementSibling.style.maxHeight = 0;
+          // arrow.style.transform = 'rotate(0deg)';
+          // arrow.style.top = '1em';
+          arrow.removeAttribute('style');
+          resetItemLabel.nextElementSibling.removeAttribute('style');
           resetItem.classList.remove('active');
         }
       });
     } else {
-      itemBody.style.maxHeight = 0;
-      labelArrow.style.transform = 'rotate(0deg)';
+      // itemBody.style.maxHeight = 0;
+      // labelArrow.style.top = '1em';
+      labelArrow.removeAttribute('style');
+      labelArrow.removeAttribute('style');
+      itemBody.removeAttribute('style');
+      // labelArrow.style.transform = 'rotate(0deg)';
     }
   });
 });
@@ -154,9 +197,6 @@ if (openNoteModal) {
   openNoteModal.forEach((note) => {
     note.addEventListener('click', (e) => {
       toggleModalElement(noteModal, 'note', 'open');
-      console.log(openNoteModal);
-      console.log(note);
-      console.log(note.dataset.contact);
       contact_input.value = note.dataset.contact;
     });
   });
@@ -179,12 +219,9 @@ if (closeModal) {
       adminNavItems.forEach((item) => {
         item.classList.remove('sub-active');
       });
-      console.log('Calling close imgModal');
       toggleModalElement(imgModal, 'upload', 'closed');
-      console.log('Calling close passwordModal');
       toggleModalElement(passwordModal, 'password', 'closed');
       toggleModalElement(noteModal, 'note', 'closed');
-      // edit_img_txt.classList.remove('form-edit');
     });
   });
 }

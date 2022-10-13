@@ -5,9 +5,9 @@
 {% block content %}
 
 <section class="admin-section">
-  <div class="provisional-info">
+  <div class="provisional-info admin">
     <div class="link-container-text">
-      <h2 class="head-title reviews">
+      <h2 class="head-title solo admin">
         <a
           href="{{ url_for('admin.admin', user_id=current_user.id) }}"
           class="admin__username"
@@ -26,7 +26,7 @@
   <div class="link-container-text admin__nav">{% include '_journey_sub-menu.html' %}</div>
 
   <!-- CONTACTS -->
-  <div class="link-container-text">
+  <div class="link-container-text admin">
     <div class="admin__contact-section">
       {% for contact in contacts | reverse %}
       <div class="admin__contact-card {% if not contact.active %}closed{% endif %}">

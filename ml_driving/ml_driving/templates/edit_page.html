@@ -5,14 +5,10 @@
 {% block content %}
 
 <section class="edit-section">
-  <div class="provisional-info">
+  <div class="provisional-info admin">
     <div class="link-container-text">
-      <h2 class="head-title reviews">
-        <a
-          href="{{ url_for('admin.admin', user_id=current_user.id) }}"
-          class="admin__username"
-          >{{ current_user.name }}</a
-        >: Edit {{ data['edit_page_details']['type'] }}
+      <h2 class="head-title solo admin">
+        Edit {{ data['edit_page_details']['type'] }}
         <span class="admin-logout"
           ><a href="{{ url_for(data['edit_page_details']['back_url']) }}">
             - {{ data['edit_page_details']['back_title'] }}</a
@@ -22,7 +18,7 @@
     </div>
   </div>
 
-  <div class="link-container-text admin__edit-form">
+  <div class="link-container-text admin admin__edit-form">
     {% include data['edit_page_details']['form_page'] %}
   </div>
 </section>

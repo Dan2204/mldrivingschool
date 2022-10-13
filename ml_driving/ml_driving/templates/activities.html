@@ -5,9 +5,9 @@
 {% block content %}
 
 <section class="admin-section">
-  <div class="provisional-info">
+  <div class="provisional-info admin">
     <div class="link-container-text">
-      <h2 class="head-title reviews">
+      <h2 class="head-title solo admin">
         <a 
         href="{{ url_for('admin.admin', user_id=current_user.id) }}"  
         class="admin__username">
@@ -26,7 +26,7 @@
 
 
   <!-- USER_ACTIVITY -->
-    <div class="link-container-text">
+    <div class="link-container-text admin">
       <div class="admin__activity-section">
         <div class="admin__user-activities">
           <div class="title__pagination">
@@ -36,7 +36,9 @@
               {% endif %}
             </h2>
             {% if pages.has_next or pages.has_prev %}
+            <span class="top-pagination">
             {% include '_pagination_activities.html' %}
+            </span>
             {% endif %}
           </div>
           <div class="activity_content">

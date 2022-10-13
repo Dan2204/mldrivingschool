@@ -39,13 +39,15 @@ login_manager.login_view = 'admin.login'
 #-------------------------
 
 from ml_driving.core.views import bp as core
-from ml_driving.admin.views import bp as admin
 from ml_driving.users.views import bp as users
+from ml_driving.admin.views import bp as admin
 from ml_driving.reviews.views import bp as reviews
+from ml_driving.errors.handlers import bp as errors
 
 
 app.register_blueprint(core)
 app.register_blueprint(admin)
 app.register_blueprint(users)
+app.register_blueprint(errors)
 app.register_blueprint(reviews)
 

@@ -5,14 +5,10 @@
 {% block content %}
 
 <section class="create-section">
-  <div class="provisional-info">
+  <div class="provisional-info admin">
     <div class="link-container-text">
-      <h2 class="head-title reviews">
-        <a
-          href="{{ url_for('admin.admin_users', user_id=current_user.id) }}"
-          class="admin__username"
-          >{{ current_user.name }}</a
-        >: Create User
+      <h2 class="head-title solo admin">
+        Create User
         <span class="admin-logout"
           ><a href="{{ url_for('users.users') }}"> - Back to users</a></span
         >
@@ -28,7 +24,7 @@
         class="create_user-form"
       >
         {{ data['add_user_form'].csrf_token() }}
-        <h2 class="head-title new-password">Enter Details:</h2>
+        <h2 class="head-title solo new-password">Enter Details:</h2>
         <div class="form-group">
           <p>
             <!-- ERROR MESSAGES -->

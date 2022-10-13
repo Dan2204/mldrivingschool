@@ -5,9 +5,9 @@
 {% block content %}
 
 <section class="admin-section">
-  <div class="provisional-info">
+  <div class="provisional-info admin">
     <div class="link-container-text">
-      <h2 class="head-title reviews">
+      <h2 class="head-title solo admin">
         <a
           href="{{ url_for('admin.admin', user_id=current_user.id) }}"
           class="admin__username"
@@ -25,8 +25,8 @@
 
   <div class="link-container-text admin__nav">{% include '_journey_sub-menu.html' %}</div>
 
-  <!-- REVIEWS -->
-  <div class="link-container-text">
+  <!-- REVIEWS TO APPROVE -->
+  <div class="link-container-text admin">
     <div class="admin__reviews-section">
       <div class="admin__reviews-to-approve">
         <h2>Reviews for approval: ({{ data['unapproved_reviews'] | length }})</h2>
@@ -61,6 +61,7 @@
         </div>
         {% endfor %}
       </div>
+      <!-- APPROVED REVIEWS -->
       <div class="admin__reviews-to-approve">
         <h2>Approved Reviews: ({{ data['approved_reviews'] | length }})</h2>
         {% for review in data['approved_reviews'] %}

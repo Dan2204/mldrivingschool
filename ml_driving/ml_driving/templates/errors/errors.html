@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+<!-- Block Input -->
+{% block content %}
+
+<!-- image if 404 -->
+{% if title == "404" %}
+<div class="bg_404"></div>
+{% endif %}
+<div class="link-container-text error-page">
+  <h1>ERROR: {{ title }}</h1>
+  <br />
+  {% if title == "404" or title == "403" %}
+  <h3>{{ system_error }}</h3>
+  {% elif title == "500" or title == "501" %}
+  <h3>Internal Server Error...</h3>
+  <p>Please try again later</p>
+  {% endif %}
+</div>
+
+{% endblock content %}

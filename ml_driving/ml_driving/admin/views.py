@@ -421,27 +421,24 @@ def login():
   form = LoginForm()
   if form.validate_on_submit():
     user = User.query.filter_by(email=form.email.data).first()
-    if user.active:
-      if user is None or not user.check_password(form.password.data):
-          flash('Invalid email or password')
-          return redirect(url_for('admin.login'))
-      if not user.active:
-          flash("Sorry, account suspended, please contact admin.")
-          return redirect(url_for('admin.login'))
-      login_user(user)
-      has_error = add_activity("Logging in", user)
-      if has_error[0]:
-        send_notification(format_general_db_error("Adding Activity - Logging in", has_error[1]))
-        flash_message = "Database Error. Admin have been informed."
-      else:
-        flash_message = f'{user.name} is now logged in.'
-      flash(flash_message)
-      next = request.args.get('next')
-      if not next or url_parse(next).netloc != '':
-          next = url_for('admin.admin', user_id=current_user.id)
+    if user is None or not user.check_password(form.password.data):
+        flash('Invalid email or password')
+        return redirect(url_for('admin.login'))
+    if not user.active:
+        flash("Sorry, account suspended, please contact admin.")
+        return redirect(url_for('admin.login'))
+    login_user(user)
+    has_error = add_activity("Logging in", user)
+    if has_error[0]:
+      send_notification(format_general_db_error("Adding Activity - Logging in", has_error[1]))
+      flash_message = "Database Error. Admin have been informed."
     else:
-      flash("Please contact admin.")
-      return redirect(url_for('admin.login'))
+      flash_message = f'{user.name} is now logged in.'
+    flash(flash_message)
+    next = request.args.get('next')
+    if not next or url_parse(next).netloc != '':
+          next = url_for('admin.admin', user_id=current_user.id)
+
     return redirect(next)
   
   return render_template('login.html', title="Login", form=form)

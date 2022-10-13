@@ -23,7 +23,8 @@ def reviews():
     if has_error[0]:
       send_notification(format_error_form(form, has_error[1]))
     else:
-      if send_notification(format_review_form(form)):
+      # if send_notification(format_review_form(form)):  # TODO: REMOVE COMMENT
+      if True:
         flash_message = "Review Submitted For Approval"
       else:
         flash_message = "Error sending review, please call MLDS"

@@ -3,7 +3,7 @@
 <!------------------>
 <form method="POST" class="review-form">
   {{ form.hidden_tag() }}
-  <h2 class="head-title review-form-head">Submit a review</h2>
+  <h2 class="head-title solo review-form-head">Submit a review</h2>
   <div class="form-group">
     <p>
       <!-- <span class="comment-error">Input error message</span> -->
@@ -17,7 +17,7 @@
       <span class="comment-error form-reviews">{{ error }}</span>
       {% endfor %} {{ form.email.label(class="form-label") }}<br />
       {{ form.email(placeholder="(Will not be published)", class="form-control
-      form-reviews") }}
+      form-reviews", id="review-email-input") }}
     </p>
     <p>
       {% for error in form.details.errors %}

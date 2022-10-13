@@ -48,7 +48,8 @@ def standard():
     if has_error[0]:
       send_notification(format_error_form(form, has_error[1]))
     else: 
-      if send_notification(format_contact_form(form)):
+      # if send_notification(format_contact_form(form)): # TODO: UNCOMMENT
+      if True:
         flash("Message Sent, Please wait for reply.")
       else:
         flash("Error sending message, please call MLDS")

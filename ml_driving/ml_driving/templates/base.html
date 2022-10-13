@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- SEO -->
+    <meta name="description" content="Driving Instructors &amp; across Monmouthshire. Driving Instructor for Rogiet, Crick, Sudbrook Caldicot, Mathern, Caerwent areas. Gas &amp; Driving Instructors, Monmouthshire."><link rel="canonical" href="http://www.mldrivingschool.co.uk" /><meta property="og:locale" content="en_GB" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Driving Instructor. Monmouthshire." />
+    <meta property="og:description" content="Driving Instructors &amp; across Monmouthshire. Driving Instructor for Rogiet, Crick, Sudbrook Caldicot, Mathern, Caerwent areas. Gas &amp; Driving Instructors, Monmouthshire." />
+    <meta property="og:url" content="http://www.mldrivingschool.co.uk" />
+    <meta property="og:site_name" content="Matt Lucas Driving School" />
     <title>{{ title | default("MLDS") }} | MMDS - Driving School</title>
 
     <!-- RECAPTURE -->
@@ -108,64 +115,68 @@
         <nav class="nav">
           <div class="bottom-nav-banner"><div class="inner"></div></div>
           <button class="toggle-btn" id="toggle-btn">
-            <i class="fa-solid fa-bars"></i>Menu
+            <i class="fa-solid fa-bars"></i>
+            <span class="nav-toggle-close"><i class="fa-solid fa-xmark"></i>
+            </span><span class="text">Menu</span>
           </button>
-          <ul class="nav-links" id="nav-links">
-            <li class="nav-link {% if title == 'Home' %}active{% endif %}">
-              <a href="{{ url_for('core.home') }}">Home</a>
-            </li>
-
-            <li
-              class="nav-link {% if title == 'Standard' or title == 'Intensive' or title == 'Refresher'%}active{% endif %}"
-              id="link-courses"
-            >
-              <a
-                >Pricing<span><i class="fa-solid fa-caret-down"></i></span
-              ></a>
-              <ul class="dropdown" id="dd-courses">
-                <li><a href="{{ url_for('core.standard') }}">Standard Lessons</a></li>
-                <li><a href="{{ url_for('core.intensive') }}">Intensive Courses</a></li>
-                <li><a href="{{ url_for('core.refresher') }}">Refresher Courses</a></li>
-              </ul>
-            </li>
-            <li class="nav-link {% if title == 'About' %}active{% endif %}">
-              <a href="{{ url_for('core.about') }}">About Us</a>
-            </li>
-            <li
-              class="nav-link {% if title == 'Eligibility' or title == 'Theory' or title == 'Practical'%}active{% endif %}"
-              id="link-learners"
-            >
-              <a
-                >Your Journey<span><i class="fa-solid fa-caret-down"></i></span
-              ></a>
-              <ul class="dropdown" id="dd-learners">
-                <li><a href="{{ url_for('core.eligibility') }}">Eligibility</a></li>
-                <li><a href="{{ url_for('core.theory') }}">The Theory Test</a></li>
-                <li><a href="{{ url_for('core.practical') }}">The Practical Test</a></li>
-              </ul>
-            </li>
-            <li class="nav-link {% if title == 'Useful Links' %}active{% endif %}">
-              <a href="{{ url_for('core.useful_info') }}">Useful Links</a>
-            </li>
-            <li class="nav-link {% if title == 'FAQ\'s' %}active{% endif %}">
-              <a href="{{ url_for('core.faqs') }}">FAQ's</a>
-            </li>
-            <li
-              class="nav-link {% if title == 'Reviews' or title == 'Gallery' %}active{% endif %}"
-              id="link-reviews"
-            >
-              <a
-                >Reviews<span><i class="fa-solid fa-caret-down"></i></span
-              ></a>
-              <ul class="dropdown" id="dd-reviews">
-                <li><a href="{{ url_for('reviews.reviews') }}">Reviews</a></li>
-                <li><a href="{{ url_for('core.gallery') }}">Success Gallary</a></li>
-              </ul>
-            </li>
-            <li class="nav-link {% if title == 'Contact' %}active{% endif %}">
-              <a href="{{ url_for('core.contact') }}">Contact Us</a>
-            </li>
-          </ul>
+          <div class="nav-link-body">
+            
+            <ul class="nav-links" id="nav-links">
+              <li class="nav-link {% if title == 'Home' %}active{% endif %}">
+                <a href="{{ url_for('core.home') }}">Home</a>
+              </li>
+              <li
+                class="nav-link {% if title == 'Standard' or title == 'Intensive' or title == 'Refresher'%}active{% endif %}"
+                id="link-courses"
+              >
+                <a
+                  >Pricing<span><i class="fa-solid fa-caret-down"></i></span
+                ></a>
+                <ul class="dropdown" id="dd-courses">
+                  <li><a href="{{ url_for('core.standard') }}">Standard Lessons</a></li>
+                  <li><a href="{{ url_for('core.intensive') }}">Intensive Courses</a></li>
+                  <li><a href="{{ url_for('core.refresher') }}">Refresher Courses</a></li>
+                </ul>
+              </li>
+              <li class="nav-link {% if title == 'About' %}active{% endif %}">
+                <a href="{{ url_for('core.about') }}">About Us</a>
+              </li>
+              <li
+                class="nav-link {% if title == 'Eligibility' or title == 'Theory' or title == 'Practical'%}active{% endif %}"
+                id="link-learners"
+              >
+                <a
+                  ><span class="nav-your">Your</span> Journey<span><i class="fa-solid fa-caret-down"></i></span
+                ></a>
+                <ul class="dropdown" id="dd-learners">
+                  <li><a href="{{ url_for('core.eligibility') }}">Eligibility</a></li>
+                  <li><a href="{{ url_for('core.theory') }}">The Theory Test</a></li>
+                  <li><a href="{{ url_for('core.practical') }}">The Practical Test</a></li>
+                </ul>
+              </li>
+              <li class="nav-link {% if title == 'Useful Links' %}active{% endif %}">
+                <a href="{{ url_for('core.useful_info') }}">Useful Links</a>
+              </li>
+              <li class="nav-link {% if title == 'FAQ\'s' %}active{% endif %}">
+                <a href="{{ url_for('core.faqs') }}">FAQs</a>
+              </li>
+              <li
+                class="nav-link {% if title == 'Reviews' or title == 'Gallery' %}active{% endif %}"
+                id="link-reviews"
+              >
+                <a
+                  >Reviews<span><i class="fa-solid fa-caret-down"></i></span
+                ></a>
+                <ul class="dropdown" id="dd-reviews">
+                  <li><a href="{{ url_for('reviews.reviews') }}">Reviews</a></li>
+                  <li><a href="{{ url_for('core.gallery') }}">Success Gallery</a></li>
+                </ul>
+              </li>
+              <li class="nav-link {% if title == 'Contact' %}active{% endif %}">
+                <a href="{{ url_for('core.contact') }}">Contact Us</a>
+              </li>
+            </ul>
+          </div>
         </nav>
       </header>
       <div class="container-message">
@@ -183,9 +194,9 @@
       {% endif %}
 
       <!-- JINJA2 CONTENT INSERT HERE -->
-
+      <div class="page__content-inject">
       {% block content %} {% endblock content %}
-
+      </div>
       <!-- END JINJA2 CONTENT -->
       {% if not title == "Login" %}
       <div class="banner"></div>
@@ -213,7 +224,7 @@
             © Copyright
             <script>
               document.write(new Date().getFullYear());
-            </script>
+            </script><span class="lbr"><br/></span>
             <a href="#">mldrivingschool.co.uk</a> All Rights Reserved
           </div>
         </div>
@@ -224,8 +235,7 @@
               <li>Driving Lessons</li>
               <li>Intesnsive Courses</li>
               <li>Refresher Courses</li>
-
-              <li>& more</li>
+              <!-- <li>& more</li> -->
             </ul>
           </div>
           <div class="areas-covered">
@@ -233,7 +243,7 @@
             <ul class="areas">
               <li>Caldicot</li>
               <li>Chepstow</li>
-              <li>& all surrounding villages</li>
+              <li>Surrounding villages</li>
             </ul>
           </div>
         </div>

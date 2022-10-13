@@ -15,12 +15,13 @@ def format_contact_form(form):
   body_phone = f'<p><strong>Phone: </strong> {form.phone.data} </p>'
   body_subject = f'<p><strong>Subject: </strong> {subject_text} </p>'
   body_message = f'<p><strong>Message: </strong> {form.details.data} </p>'
-  body_auth = f'<br/><p><a href="http://google.com" style="color: #ff0000">Log in to admin to view contact</a></p>'
+  body_auth = f'<br/><p><a href="https://dan2204py.eu.pythonanywhere.com/admin/contacts" style="color: #ff0000">Log in to admin to view contact</a></p>'
   body_footer = "<br/><p>This message is automated, please don't respond</p>"
   
   return Mail(
     from_email='dan.lucas2204@gmail.com',
-    to_emails=[To(email_to_1), To(email_to_2), To(email_to_3)],
+    to_emails=email_to_1,
+    # to_emails=[To(email_to_1), To(email_to_2), To(email_to_3)],
     is_multiple=True,
     subject="Automated Message: You've recieved a Contact Message from MLDS",
     html_content=f"{body_head}\n{body_name}\n{body_email}\n{body_phone}\n" \
@@ -36,12 +37,13 @@ def format_review_form(form):
   body_name = f'<p><strong>Name: </strong> {form.name.data} </p>'
   body_email = f'<p><strong>Email: </strong> {form.email.data} </p>'
   body_message = f'<p><strong>Review: </strong> {form.details.data} </p>'
-  body_auth = f'<br/><p><a href="http://google.com" style="color: #ff0000">Log in to Admin to approve</a></p>'
+  body_auth = f'<br/><p><a href="https://dan2204py.eu.pythonanywhere.com/admin/reviews" style="color: #ff0000">Log in to Admin to approve</a></p>'
   body_footer = "<br/><p>This message is automated, please don't respond</p>"
   
   return Mail(
     from_email='dan.lucas2204@gmail.com',
-    to_emails=[To(email_to_1), To(email_to_2), To(email_to_3)],
+    to_emails=email_to_1,
+    # to_emails=[To(email_to_1), To(email_to_2), To(email_to_3)],
     is_multiple=True,
     subject=F"Automated Message: You've recieved a Review from {form.email.data}",
     html_content=f"{body_head}\n{body_name}\n{body_email}\n{body_message}\n" \
