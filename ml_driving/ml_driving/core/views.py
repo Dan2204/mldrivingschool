@@ -7,8 +7,15 @@ from ml_driving.admin.notifications import send_notification
 from ml_driving.admin.form_db_process import add_contact
 from ml_driving.core.menu_items import price_menu, journey_menu, review_menu
 
-from flask import render_template, redirect, url_for, flash, request
-from flask_login import current_user, login_required
+from flask import render_template, redirect, url_for, flash, request, Response
+
+
+@bp.route('/robots.txt')
+def robots_txt():
+    r = Response(response="User-Agent: *\nDisallow:/admin/\nDisallow:/reviews/approve\n" 
+                 "Disallow:/reviews/delete\nDisallow:/users/\n", status=200, mimetype="text/plain")
+    r.headers["Content-Type"] = "text/plain; charset=utf-8"
+    return r
 
 
 @bp.route('/', methods=['GET', 'POST'])
@@ -48,8 +55,7 @@ def standard():
     if has_error[0]:
       send_notification(format_error_form(form, has_error[1]))
     else: 
-      # if send_notification(format_contact_form(form)): # TODO: UNCOMMENT
-      if True:
+      if send_notification(format_contact_form(form)):
         flash("Message Sent, Please wait for reply.")
       else:
         flash("Error sending message, please call MLDS")
@@ -161,7 +167,6 @@ def contact():
         flash("Error sending message, please call MLDS")
     return redirect(back)
   
-  # return render_template('contact.html', title="Contact", form=form)
   return render_template('contact.html', title="Contact", form=form, form_title="Ask a question:")
 
 

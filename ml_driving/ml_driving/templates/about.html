@@ -4,14 +4,15 @@
 
 {% block content %}
 
-<section class="about-section">
+<section class="about-section" style="margin-bottom: 6em;">
   <div class="link-container-text">
-    <h1 class="head-title solo about">About Matt Lucas Driving School</h1>
+    <!-- <h1 class="head-title solo about">About Matt Lucas Driving School</h1> -->
   </div>
   <div class="about-info about">
     <div class="link-container-text">
       <div class="about-card">
         <div class="about-content">
+          <h1 class="head-title solo about">About Matt Lucas Driving School</h1>
           <p class="lead">
             I have 28 years of experience in the retail sector, coaching new skills,
             processes, and behaviours to teams and individuals.
@@ -30,12 +31,13 @@
             <li class="app_item lg">
               Strong interpersonal skills, enhancing the individual learning experience
             </li>
-            <li class="app_item lg">28 years experience of coaching and developing</li>
+            <li class="app_item lg">
+              28 years experience of coaching and developing</li>
           </ul>
         </div>
         <div class="about-img">
           <img
-            src="{{ url_for('static', filename='img/matt_car.jpeg') }}"
+            src="{{ url_for('static', filename='img/matt_about.jpg') }}"
             alt="Matt Lucas"
           />
         </div>
@@ -44,6 +46,8 @@
   </div>
 </section>
 
-<h2 class="pre-footer-message">More text here...</h2>
+<h2 class="pre-footer-message wow bounceIn">
+  Learning is more effective when it is an active, rather than a passive process.
+</h2>
 
 {% endblock content %}

@@ -4,10 +4,6 @@ price_menu = [
     "link": "core.standard",
   },
   {
-    "option": "Intensive",
-    "link": "core.intensive",
-  },
-  {
     "option": "Refresher",
       "link": "core.refresher",
    },

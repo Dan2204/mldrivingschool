@@ -16,8 +16,8 @@ from flask import render_template, redirect, url_for, flash, request, session
 from flask_login import login_user, logout_user, current_user, login_required
 
 
-# @bp.route('/erudite/badger/admin', methods=['GET', 'POST'])
-@bp.route('/admin/<user_id>', methods=['GET', 'POST'])
+@bp.route('/erudite/badger/admin', methods=['GET', 'POST'])
+@bp.route('/erudite/badger/admin/<user_id>', methods=['GET', 'POST'])
 @login_required
 def admin(user_id=None):  
   
@@ -25,14 +25,10 @@ def admin(user_id=None):
     user = User.query.get_or_404(user_id)
   else:
     user = current_user
-    
-    
-  image_form = ImageForm()
+   
   password_form = ChangePasswordForm()
   reviews = Review.query.filter_by(active=False).order_by(Review.creation_date.desc()).all()
   activities = list(user.activities)
-  
-  # template_options['admin_nav'] = "profile"
   
   if session.get('password_error') == True:
     password_form.current_password.errors = tuple(['Incorrect password.'])
@@ -454,4 +450,3 @@ def logout():
     flash('Logged out')
     return redirect(url_for('core.home'))
   
-

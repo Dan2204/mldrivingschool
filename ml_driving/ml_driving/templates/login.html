@@ -16,7 +16,6 @@
         <h2 class="head-title solo login">Admin Login</h2>
         <div class="form-group">
           <p>
-            <!-- <span class="comment-error">Input error message</span> -->
             {% for error in form.email.errors %}
             <span class="comment-error">{{ error }}</span>
             {% endfor %} {{ form.email.label(class="form-label login") }}<br />
@@ -27,6 +26,12 @@
             <span class="comment-error">{{ error }}</span>
             {% endfor %} {{ form.password.label(class="form-label login") }}<br />
             {{ form.password(placeholder="Enter Password...", class="form-control") }}
+          </p>
+          <p class="form-recaptcha review-page">
+            {% for error in form.recaptcha.errors %}
+            <span class="comment-error">{{ error }}</span>
+            {% endfor %}
+            {{ form.recaptcha(class="form-rc") }}
           </p>
 
           <p>{{ form.submit_login(class="btn login") }}</p>

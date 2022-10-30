@@ -16,7 +16,9 @@ def send_notification(message):
           html_content=f"<h1>Notification returned with a status of {response.status_code}</h1>" \
                         f"<p>{message}</p>")
         )
-      return True
+      # return True
+      return {'result': True, 'error': None}
   except Exception as e:
-      return False
+      # return False
+      return {'result': False, 'error': e}
 

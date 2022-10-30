@@ -1,3 +1,13 @@
 .DS_Store
 __pycache__/
 research/
+gallery/
+migrations/
+
+mld_venv
+.env
+sendgrid.env
+pa_code.py
+data.db
+script_temp.js
+.gitignore

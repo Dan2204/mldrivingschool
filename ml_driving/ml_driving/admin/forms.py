@@ -1,5 +1,5 @@
 from flask import session
-from flask_wtf import FlaskForm
+from flask_wtf import FlaskForm, RecaptchaField
 from wtforms import SubmitField, StringField, PasswordField
 from wtforms.fields.html5 import DateField
 from wtforms.validators import DataRequired, Email, ValidationError
@@ -28,6 +28,7 @@ class LoginForm(FlaskForm):
   
   email = StringField('Email: ', validators=[DataRequired(), Email()])
   password = PasswordField('Password: ', validators=[DataRequired()])
+  recaptcha = RecaptchaField()
   submit_login = SubmitField('Login')
   
 

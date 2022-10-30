@@ -23,28 +23,32 @@
           <div class="content_text">
             <h2 class="title-price home">Getting your license..</h2>
             <p class="lead">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum tempora
-              atque, voluptatum nihil autem error sed natus aliquam sapiente
-              necessitatibus accusamus, dolore possimus alias sit architecto, vel
-              voluptate nesciunt facilis.
+              Everyone has different reasons for wanting to drive, whether its for work or
+              just for freedom, and whatever the reason I am here to offer Driver training
+              tailored to your individual needs.
             </p>
 
             <p class="lead">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati culpa
-              alias perspiciatis voluptatibus voluptatum? Placeat molestias tempora iste
-              praesentium reprehenderit!
+              Working through a syllabus, starting with learning how to control the car,
+              moving onto dealing with Junctions and roadcraft, we will work to best
+              understand your learning style.
             </p>
 
             <p class="lead">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum tempora
-              atque, voluptatum nihil autem error sed natus aliquam sapiente
-              necessitatibus accusamus, dolore possimus alias sit architecto, vel
-              voluptate nesciunt facilis.
+              Once you engage us as your choice of ADI, we are absolutely invested in
+              helping you in your goal to obtain your license, and get you cruising on the
+              open road.
+            </p>
+            <p class="lead">
+              Everyone learns in a different way and at variable pace. By working together
+              we will can find the best approach to help you and tailor your own
+              individual learning journey
             </p>
           </div>
+
           <section class="top_image_section">
             <div class="images_section_1">
-              <div class="image_tile">
+              <div class="image_tile wow bounceIn">
                 <a href="{{ url_for('core.standard') }}">
                   <img
                     src="{{ url_for('static', filename='img/price-std_img_tn.jpg') }}"
@@ -65,7 +69,7 @@
                 </a>
               </div>
 
-              <div class="image_tile">
+              <div class="image_tile wow fadeInLeft">
                 <a href="{{ url_for('core.theory') }}">
                   <img
                     src="{{ url_for('static', filename='img/practical_test.png') }}"
@@ -89,7 +93,7 @@
             </div>
 
             <div class="images_section_2">
-              <div class="image_tile">
+              <div class="image_tile wow slideInRight">
                 <a href="{{ url_for('core.eligibility') }}">
                   <img
                     src="{{ url_for('static', filename='img/paperwork_tn.jpeg') }}"
@@ -109,7 +113,7 @@
                   </p>
                 </a>
               </div>
-              <div class="image_tile">
+              <div class="image_tile wow bounce">
                 <a href="{{ url_for('core.useful_info') }}">
                   <img
                     src="{{ url_for('static', filename='img/useful_info_tn.jpg') }}"
@@ -138,6 +142,9 @@
   </div>
 </section>
 
-<h2 class="pre-footer-message">More text here...</h2>
+<h2 class="pre-footer-message home-message wow fadeInLeftBig">
+  I am invested in your success, and look forward to working with you and helping you gain
+  your license.
+</h2>
 
 {% endblock content %}
